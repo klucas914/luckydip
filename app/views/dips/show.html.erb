@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>I'm in the mood for:</strong>
+  <%= @dip.activity_id %>
+</p>
+
+<p>
+  <strong>At this type of place:</strong>
+  <%= @dip.location_type_id %>
+</p>
+
+
+<p>
+  <strong>Distance:</strong>
+  <%= @dip.distance %>
+</p>
+
+<%= link_to 'Edit', edit_dip_path(@dip) %> |
+<%= link_to 'New Dip', new_dip_path %>

@@ -1,0 +1,34 @@
+<div class="container">
+<%= form_for(dip) do |f| %>
+  <% if dip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(dip.errors.count, "error") %> prohibited this dip from being saved:</h2>
+
+      <ul>
+      <% dip.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "I'm in the mood for..." %>
+    <%= f.select :activity_id, options_for_select(@activities.collect{ |a| [a.name, a.id]}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label "At this type of place..." %>
+    <%= f.select :location_type_id, options_for_select(@location_types.collect{ |a| [a.name, a.id]}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label "I want to go this far from my current location..." %>
+    <%= f.number_field :distance %> km
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>

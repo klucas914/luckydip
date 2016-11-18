@@ -1,0 +1,22 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<h1>Location Types</h1>
+
+<table class="table table-striped">
+
+  <tbody>
+    <% @location_types.each do |location_type| %>
+      <tr>
+        <td><%= location_type.name %>
+        <td><%= link_to 'Edit', edit_location_type_path(location_type) %></td>
+        <td><%= link_to 'Destroy', location_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Location Type', new_location_type_path %>
+</div>
