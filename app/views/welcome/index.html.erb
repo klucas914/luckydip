@@ -1,11 +1,24 @@
 <div class="container">
+<p>
 
-<h1>Welcome to Lucky Dip!</h1>
+<div class="row">
+<div align="center">
+<h1 class="display-1 text-centered">Welcome to Lucky Dip!</h1>
+</div>
+</div>
 
-  <h4>Are you feeling lucky?</h4>
+<div class="row">
+  <div align="center"><%= link_to image_tag("luckydip.png", alt: "LuckyDip logo") %>
+  </div>
+</div>
   
-
-
-
-<%= link_to 'Go!', new_dip_path %>
+  
+<div class="row">
+  <div align="center">
+   <h2 class="display-3">Feeling lucky?</h2>
+  </div>
+</div>
+<p>
+<div class="row">
+  <div align="center"><%= link_to 'Go!', new_dip_path, class: "btn btn-primary btn-lg" %>
 </div>

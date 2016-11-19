@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161119005822) do
+ActiveRecord::Schema.define(version: 20161119052543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,9 +43,14 @@ ActiveRecord::Schema.define(version: 20161119005822) do
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "address"
+    t.integer  "activity_id"
+    t.integer  "location_type_id"
+    t.string   "URL"
+    t.index ["activity_id"], name: "index_locations_on_activity_id", using: :btree
+    t.index ["location_type_id"], name: "index_locations_on_location_type_id", using: :btree
   end
 
   create_table "selections", force: :cascade do |t|
@@ -64,6 +69,8 @@ ActiveRecord::Schema.define(version: 20161119005822) do
   add_foreign_key "activities", "dips", column: "dips_id"
   add_foreign_key "dips", "activities"
   add_foreign_key "dips", "location_types"
+  add_foreign_key "locations", "activities"
+  add_foreign_key "locations", "location_types"
   add_foreign_key "selections", "activities"
   add_foreign_key "selections", "dips"
   add_foreign_key "selections", "location_types"

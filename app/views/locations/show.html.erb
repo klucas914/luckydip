@@ -5,7 +5,11 @@
   <strong>Name:</strong>
   <%= @location.name %><br />
   <strong>Address:</strong>
-  <%= @location.address %>
+  <%= @location.address %><br />
+  <strong>Activities:</strong>
+  <%= @location.activity_id %><br />
+  <strong>Location Type:</strong>
+  <%= @location.location_type_id %>
 </p>
 
 <%= link_to 'Edit', edit_location_path(@location) %> |

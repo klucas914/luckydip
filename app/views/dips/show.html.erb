@@ -1,62 +1,85 @@
+<p>
 <div class="container">
-
-<p id="notice"><%= notice %></p>
-
-<div class="row">
-  <div class="col-sm-6">
-
-<h4>Here's what you've said...</h4>
+  <div align="center">
+    <%= link_to image_tag("luckydip.png", alt: "LuckyDip logo") %>
+    <p>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="container">
+        <p>
+        <h3>Here's what you've said...</h3>
 <p>
 <p>
-  <strong>I'm in the mood for:</strong>
-  <%= @dip.activity_id %>
+        <strong>I'm in the mood for:</strong>
+        <%= @activity.name %>
 </p>
 
 <p>
-  <strong>At this type of place:</strong>
-  <%= @dip.location_type_id %>
+        <strong>At this type of place:</strong>
+        <%= @location_type.name %>
 </p>
 
 
 <p>
-  <strong>Distance:</strong>
-  <%= @dip.distance %> km away
+        <strong>Distance:</strong>
+        <%= @dip.distance %> km away
 </p>
+
+    <%#= form_tag url_for(action: :create_selection), {method: 'post'} do %> 
+      <td><%#= select_tag 'selection[activity_id]', options_for_select(Selection.activity), { class: 'form-control'} %></td>
+      <td><%#= select_tag 'selection[location_type_id]', options_for_select(Selection.location_type), { class: 'form-control'} %></td>
+      <td><%#= submit_tag "I'm feeling lucky!", class: 'btn btn-success' %></td>
+    <%# end %>
 
 <%= link_to 'Edit', edit_dip_path(@dip) %> 
 
-
-<tr>
-    <%= form_tag url_for(action: :pick_location), {method: 'post'} do %> 
-      <td><%= submit_tag 'Go!', class: 'btn btn-success' %></td>
-    <% end %>
-  </tr>
-
+<p>
+   </div>
+  </div>
 </div>
 
-  <div class="col-sm-6">
 
 
-  <h3>Give this a try...</h3>
+<div class="row">
+  <div class="col-sm-7">
+    <div class="card">
+    <div class="container">
+<p>
 
-<%# if @dip.selections.empty? %>
+  <h2>Give this a try...</h2>
+
+<%# if @selections.empty? %>
       <tr>
-        <td> There aren't any selections yet.</td>
+        <td> </td>
         
       <%# end %>
       </tr>
 
-    <%# @dip.selections.each do |selection| %>
+<%# @selections.each do |selection| %>
        <tr>
-         <td><%#= selection.location.name %></td>
+         <td><%= @activity_id %></td>
+         <td><%= @location_type_id %></td>
+        </tr>
 
-<%# end %>
+<% #end %>
 
-  <p>Location Name:</p>
+  <p>Location Name: <h2>Mooloolaba Beach</h2></p>
 
-  <p>Location Address:</p>
+  <p>Location Address: <h2>Esplanade, Mooloolaba</h2></p>
 
-<%= link_to 'New Dip', new_dip_path %>
+  <p>
 
+  <%= link_to 'See reviews for this location.' %>
+
+<div align="center">
+<%= link_to 'New Dip', new_dip_path, class: "btn btn-success" %>
+</div>
+<p>
+     </div>
+    </div>
   </div>
+</div>
+  
  
