@@ -1,7 +1,19 @@
+<p>
 <div class="container">
-<h1>New Location</h1>
-
-<%= render 'form', location: @location %>
-
-<%= link_to 'Back', locations_path %>
+  <div align="center">
+    <%= link_to image_tag("luckydip.png", alt: "LuckyDip logo") %>
+    <p>
+    <div class="card" style="max-width: 50rem;">
+      <p>
+      <h1>New Location</h1>
+       <p>
+      <%= render 'form', location: @location %>
+      <p>
+      <p>
+     <%= link_to 'Back', locations_path %>
+    </div>
+  </div>
 </div>
+
+
+

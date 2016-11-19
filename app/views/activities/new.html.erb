@@ -1,7 +1,19 @@
+<p>
 <div class="container">
-<h1>New Activity</h1>
-
-<%= render 'form', activity: @activity %>
-
-<%= link_to 'Back', activities_path %>
+  <div align="center">
+    <%= link_to image_tag("luckydip.png", alt: "LuckyDip logo") %>
+    <p>
+    <div class="card" style="max-width: 50rem;">
+      <p>
+      <h1>New Activity</h1>
+       <p>
+      <%= render 'form', activity: @activity %>
+      <p>
+      <p>
+     <%= link_to 'Back', activities_path %>
+    </div>
+  </div>
 </div>
+
+
+

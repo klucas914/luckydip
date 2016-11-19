@@ -1,8 +1,18 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
+<p>
 
-<h1>Locations</h1>
-
+<p>
+<div class="container">
+  <div align="center">
+    <%= link_to image_tag("luckydip.png", alt: "LuckyDip logo") %>
+    <p>
+  <div class="card">
+    <div class="card-block">
+      <h1 class="card-title">Locations</h1>
+<p>
+<p class="card-text">
+<%= link_to 'New Location', new_location_path, class: 'btn btn-success' %>
+<p>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -30,6 +40,8 @@
 </table>
 
 <br>
+</p>
 
-<%= link_to 'New Location', new_location_path %>
+</div>
+</div>
 </div>

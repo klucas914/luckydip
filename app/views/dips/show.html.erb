@@ -7,9 +7,9 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
-        <div class="container">
-        <p>
-        <h3>Here's what you've said...</h3>
+      <div class="card-block">
+        <h2 class="card-title">Here's what you've said...</h2>
+         <p class="card-text">
 <p>
 <p>
         <strong>I'm in the mood for:</strong>
@@ -36,6 +36,8 @@
 <%= link_to 'Edit', edit_dip_path(@dip) %> 
 
 <p>
+</p>
+  
    </div>
   </div>
 </div>
@@ -45,10 +47,12 @@
 <div class="row">
   <div class="col-sm-7">
     <div class="card">
-    <div class="container">
+    <div class="card-block">
+        <h2 class="card-title">Give this a try...</h2>
+        <p class="card-text">
+
 <p>
 
-  <h2>Give this a try...</h2>
 
 <%# if @selections.empty? %>
       <tr>
@@ -77,6 +81,7 @@
 <%= link_to 'New Dip', new_dip_path, class: "btn btn-success" %>
 </div>
 <p>
+</p>
      </div>
     </div>
   </div>

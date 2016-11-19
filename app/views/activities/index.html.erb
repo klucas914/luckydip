@@ -1,8 +1,16 @@
+<p>
 <div class="container">
-<p id="notice"><%= notice %></p>
+  <div align="center">
+    <%= link_to image_tag("luckydip.png", alt: "LuckyDip logo") %>
+    <p>
+  <div class="card">
+    <div class="card-block">
+      <h1 class="card-title">Activities</h1>
 
-<h1>Activities</h1>
-
+<p>
+<p class="card-text">
+<%= link_to 'New Activity', new_activity_path, class: 'btn btn-success' %>
+<p>
 <table class="table table-striped">
   
   <tbody>
@@ -17,6 +25,8 @@
 </table>
 
 <br>
+</p>
 
-<%= link_to 'New Activity', new_activity_path %>
+</div>
+</div>
 </div>
