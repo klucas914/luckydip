@@ -11,6 +11,9 @@ class DipsController < ApplicationController
   # GET /dips/1
   # GET /dips/1.json
   def show
+    @dip = Dip.find(params[:id])
+    @activity = @dip.activity_id
+    @location_type = @dip.location_type_id
   end
 
   # GET /dips/new
@@ -54,6 +57,21 @@ class DipsController < ApplicationController
     end
   end
 
+  def pick_location
+    dip = Dip.find(params[:id])
+
+    activity = dip.activity_id
+
+    location_type = dip.location_type_id
+
+    selection = Selection.new(activity_id: activity, location_type_id: location)
+
+    if Selection.create(activity_id: params[:activity_id], location_type_id: params[:location_type_id])
+      redirect_to dip_path(@dip)
+    else
+      render { :show }
+    end
+  end
   # DELETE /dips/1
   # DELETE /dips/1.json
   def destroy
