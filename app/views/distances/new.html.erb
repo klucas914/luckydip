@@ -1,0 +1,21 @@
+<p>
+<div class="container">
+<header><h1 class="display-4">Measure Distance</h1></header>
+
+<div class="card card-block" style="max-width: 50rem;">
+<%= form_tag distances_path do %>
+  <fieldset class="form-group">
+  <%= label_tag 'from', 'From' %>
+  <%= select_tag 'from', options_from_collection_for_select(@locations, :id, :name), class: "form-control" %>
+</fieldset>
+
+  <fieldset class="form-group">
+  <%= label_tag 'to', 'To' %>
+  <%= select_tag 'to', options_from_collection_for_select(@locations, :id, :name), class: "form-control" %>
+</fieldset>
+
+  <%= submit_tag 'Go!', class: 'btn btn-primary' %><br />
+  <%= link_to 'Back', locations_path %>
+<% end %>
+</div>
+</div>

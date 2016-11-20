@@ -1,0 +1,20 @@
+<div class="container">
+<%= form_for(@reviews) do |f| %>
+  
+
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.select :location, options_for_select(@locations.collect{ |l| [l.name, l.id]}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :review %>
+    <%= f.text_field :review %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>

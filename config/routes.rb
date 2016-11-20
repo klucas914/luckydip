@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'reviews/new'
+
   resources :dips do |d|
     collection do
       get :location_types
@@ -21,6 +23,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :location_types
   resources :activities
+  resources :distances, only: [:new, :create]
+  resources :reviews
   root 'welcome#index'
 
 end

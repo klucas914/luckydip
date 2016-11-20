@@ -15,13 +15,17 @@
   <div class="field">
     <%= f.label "I'm in the mood for..." %>
     <%= f.select :activity_id, options_for_select(@activities.collect{ |a| [a.name, a.id]}) %>
-    <%#= f.select 'selection[activity_id]', options_for_select(@activities.collect{ |a| [a.name, a.id]}) %>
+    <%#= f.select :activity, options_for_select(@activities.collect{ |a| [a.name, a.id]}) %>
+
+
   </div>
 <p>
   <div class="field">
     <%= f.label "At this type of place..." %>
+    <%#= f.select :location_type_id, options_for_select(@location_types.collect{ |a| [a.name, a.id]}) %>
     <%= f.select :location_type_id, options_for_select(@location_types.collect{ |a| [a.name, a.id]}) %>
-    <%#= f.select 'selection[location_type_id]', options_for_select(@location_types.collect{ |a| [a.name, a.id]}) %>
+
+    
   </div>
 <p>
   <div class="field">

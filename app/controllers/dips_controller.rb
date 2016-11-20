@@ -32,6 +32,16 @@ class DipsController < ApplicationController
   def edit
   end
 
+#I think the following code is more correct to create a dip, but haven't gotten it working.
+#  def create
+#   @dip = Dip.new(params[:id])
+#    @activity = Dip.find_by(id: params[:activity])
+#    @location_type = Dip.find_by(id: params[:location_type])
+#    if @activity && @location_type
+#      flash[:success] =
+#        "You are looking for a place for <b>#{@activity.name}</b> and <b>#{@location_type.name}</b>. Let's see what we can do."
+#    end
+#    redirect_to dips_path
   # POST /dips
   # POST /dips.json
   def create
