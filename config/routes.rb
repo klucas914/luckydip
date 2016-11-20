@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
   resources :locations do 
-  	collection do
+    collection do
   		get :location_types
   	end
   	collection do

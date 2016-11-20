@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-  before_action :set_location, only: [:show, :edit, :update, :destroy]
+  #before_action :set_location, only: [:show, :edit, :update, :destroy]
 
   #def get_bounding_box latitude longitude distance
    # return "%7Bxmin%3A+153.073286%2C+ymin%3A+-26.650181%2C+xmax%3A+153.087902%2C+ymax%3A+-26.641052%7D"
@@ -11,7 +11,13 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def get_location
-    Location.near('Mooloolaba, Qld, AU', 20, :units => :km)
+    @location = Location.find(params[:id])
+    if Geocoder.coordinates(@location)
+      render {:show}
+    else 
+      puts "sorry, try again"
+    end
+    #Location.near('Mooloolaba, Qld, AU', 20, :units => :km)
   end
 
   def index
@@ -24,6 +30,7 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.json
   def show
+    @location = Location.find(params[:id])
   end
 
   # GET /locations/new
@@ -36,7 +43,7 @@ class LocationsController < ApplicationController
 
   # GET /locations/1/edit
   def edit
-    @location = Location.new
+    @location = Location.find(params[:id])
     @activities = Activity.all
     @location_types = LocationType.all
   end
@@ -62,6 +69,7 @@ class LocationsController < ApplicationController
   # PATCH/PUT /locations/1
   # PATCH/PUT /locations/1.json
   def update
+    @location = Location.find(params[:id])
     respond_to do |format|
       if @location.update(location_params)
         format.html { redirect_to @location, notice: 'Location was successfully updated.' }
@@ -76,6 +84,7 @@ class LocationsController < ApplicationController
   # DELETE /locations/1
   # DELETE /locations/1.json
   def destroy
+    @location = Location.find(params[:id])
     @location.destroy
     respond_to do |format|
       format.html { redirect_to locations_url, notice: 'Location was successfully destroyed.' }
@@ -91,6 +100,6 @@ class LocationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
-      params.require(:location).permit(:name, :address, :activity_id, :location_type_id, :activity => [:name], :location => [:name])
+      params.require(:location).permit(:name, :address, :lat, :lon, :activity_id, :location_type_id, :activity => [:name], :location_type => [:name])
     end
 end

@@ -20,6 +20,8 @@
       <th>Address</th>
       <th>Activity Tags</th>
       <th>Location Type Tags</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -31,6 +33,8 @@
         <td><%= location.address %></td>
         <td><%= location.activity_id %></td>
         <td><%= location.location_type_id %></td>
+        <td><%= location.latitude %></td>
+        <td><%= location.longitude %></td>
         <td><%= link_to 'Show', location %></td>
         <td><%= link_to 'Edit', edit_location_path(location) %></td>
         <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
