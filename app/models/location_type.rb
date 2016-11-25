@@ -1,4 +1,5 @@
 class LocationType < ApplicationRecord
-  belongs_to :dip
+  has_many :dips
   has_many :locations
+  has_many :activities, :through => :locations
 end

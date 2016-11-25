@@ -9,9 +9,9 @@
   <strong>Address:</strong>
   <%= @location.address %><br />
   <strong>Activities:</strong>
-  <%= @location.activity_id %><br />
+  <%= @activity.name %><br />
   <strong>Location Type:</strong>
-  <%= @location.location_type_id %>
+  <%= @location_type.name %>
 </p>
 <p>Coordinates: <%= @location.latitude %> <%= @location.longitude %> <br />
 <%= link_to 'Calculate distance from here', new_distance_path %>

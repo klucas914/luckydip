@@ -1,7 +1,8 @@
 class Location < ApplicationRecord
   has_many :dips, through: :selections
-  has_many :activities
-  has_many :location_types
+  belongs_to :activity
+  belongs_to :location_type
+  has_many :reviews
 
   geocoded_by :address#, latitude::lat, longitude::lon   # can also be an IP address
   

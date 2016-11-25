@@ -1,6 +1,16 @@
-<h1>Editing Dip</h1>
-
-<%= render 'form', dip: @dip %>
-
-<%= link_to 'Show', @dip %> |
-<%= link_to 'Back', dips_path %>
+<p>
+<div class="container">
+  <div align="center">
+    <%= link_to image_tag("luckydip.png", alt: "LuckyDip logo") %>
+    <p>
+    <div class="card" style="max-width: 50rem;">
+      <p>
+      <h1>Edit Dip</h1>
+       <p>
+      <%= render 'form', dip: @dip %>
+      <p>
+      <p>
+     <%= link_to 'Back', root_path %>
+    </div>
+  </div>
+</div>

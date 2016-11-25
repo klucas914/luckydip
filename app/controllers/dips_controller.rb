@@ -1,5 +1,4 @@
 class DipsController < ApplicationController
-  before_action :set_dip, only: [:show, :edit, :update, :destroy]
 
   # GET /dips
   # GET /dips.json
@@ -7,6 +6,7 @@ class DipsController < ApplicationController
     @dips = Dip.all
     @activities = Activity.all
     @location_types = LocationType.all
+    
 
     #@activity = Activity.find(@dip.activity_id)
     #@location_type = LocationType.find(@dip.location_type_id)
@@ -30,6 +30,9 @@ class DipsController < ApplicationController
 
   # GET /dips/1/edit
   def edit
+     @dip = Dip.new
+    @activities = Activity.all
+    @location_types = LocationType.all
   end
 
 #I think the following code is more correct to create a dip, but haven't gotten it working.
@@ -110,6 +113,7 @@ class DipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dip_params
-      params.require(:dip).permit(:mood_for, :distance, :activity_id, :location_type_id, :activity => [:name], :location_type => [:name])
+      params.require(:dip).permit(:mood_for, :distance, :activity_id, :location_type_id, activities_attributes: [:name], location_types_attributes: [:name])
     end
+
 end

@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'reviews/new'
-
   resources :dips do |d|
     collection do
       get :location_types
@@ -12,6 +10,7 @@ Rails.application.routes.draw do
       post :create_selection
     end
   end
+  
   resources :locations do 
     collection do
   		get :location_types
@@ -25,6 +24,7 @@ Rails.application.routes.draw do
   resources :activities
   resources :distances, only: [:new, :create]
   resources :reviews
+  
   root 'welcome#index'
 
 end

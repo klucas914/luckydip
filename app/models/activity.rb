@@ -1,4 +1,5 @@
 class Activity < ApplicationRecord
-  belongs_to :dip
+  has_many :dips
   has_many :locations
+  has_many :location_types, :through => :locations
 end
