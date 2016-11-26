@@ -34,7 +34,7 @@ class ReviewsController < ApplicationController
    end
  
   def update
-    
+    @review = Review.find(params[:id])
     respond_to do |format|
       if @review.update(review_params)
         format.html { redirect_to @review, notice: 'Review was successfully updated.' }

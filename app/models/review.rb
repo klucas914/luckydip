@@ -1,3 +1,3 @@
 class Review < ApplicationRecord
-  #has_one :location
+  belongs_to :location
 end
