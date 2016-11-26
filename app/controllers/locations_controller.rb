@@ -23,8 +23,7 @@ class LocationsController < ApplicationController
   # GET /locations/1.json
   def show
     @location = Location.find(params[:id])
-    @activity = Activity.find(@location.activity_id)
-    @location_type = LocationType.find(@location.location_type_id)
+    
   end
 
   # GET /locations/new
@@ -64,6 +63,7 @@ class LocationsController < ApplicationController
   # PATCH/PUT /locations/1.json
   def update
     @location = Location.find(params[:id])
+    #raise location_params.inspect
     respond_to do |format|
       if @location.update(location_params)
         format.html { redirect_to @location, notice: 'Location was successfully updated.' }
@@ -94,6 +94,6 @@ class LocationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
-      params.require(:location).permit(:name, :address, :lat, :lon, :activity_id, :location_type_id, :activity => [:name], :location_type => [:name])
+      params.require(:location).permit(:name, :address, :lat, :lon, :activity => [:name], :location_type => [:name], activity_ids: [], location_type_ids: [])
     end
 end

@@ -52,3 +52,7 @@ gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'geocoder'
 
 gem 'httparty'
+
+gem 'chosen-rails'
+
+gem 'jquery-turbolinks'

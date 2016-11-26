@@ -4,14 +4,22 @@
       <div class="card-block">
 
 <p>
+  <%= link_to 'Back', locations_path %>
+  <p>
   <strong>Name:</strong>
   <%= @location.name %><br />
   <strong>Address:</strong>
   <%= @location.address %><br />
+
   <strong>Activities:</strong>
-  <%= @activity.name %><br />
+  <% @location.activities.each do |activity| %>
+    <%= activity.name %><br />
+  <% end %>
+
   <strong>Location Type:</strong>
-  <%= @location_type.name %>
+  <% @location.location_types.each do |location_type| %>
+    <%= location_type.name %><br />
+  <% end %>
 </p>
 <p>Coordinates: <%= @location.latitude %> <%= @location.longitude %> <br />
 <%= link_to 'Calculate distance from here', new_distance_path %>

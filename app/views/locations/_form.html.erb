@@ -24,12 +24,12 @@
 
   <div class="field">
     <%= f.label :activities_available %>
-    <%= f.select :activity_id, options_for_select(@activities.collect{ |a| [a.name, a.id]}), {}, multiple: true %>
+    <%= f.select :activity_ids, options_for_select(@activities.collect{ |a| [a.name, a.id]}), {}, multiple: true, class: "chosen-select" %>
   </div>
 
 <div class="field">
-    <%= f.label :location_type %>
-    <%= f.select :location_type_id, options_for_select(@location_types.collect{ |a| [a.name, a.id]}) %>
+    <%= f.label :location_types %>
+    <%= f.select :location_type_ids, options_for_select(@location_types.collect{ |a| [a.name, a.id]}) , {}, multiple: true, class: "chosen-select" %>
   </div>
 
   <div class="actions">
