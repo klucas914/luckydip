@@ -15,8 +15,8 @@
   <tbody>
     <% @dips.each do |dip| %>
       <tr>
-        <td><%= dip.activity_id %></td>
-        <td><%= dip.location_type_id %></td>
+        <td><%= dip.activity.name %></td>
+        <td><%= dip.location_type.name %></td>
         <td><%= dip.distance %> km</td>
         <td><%= link_to 'Show', dip %></td>
         <td><%= link_to 'Edit', edit_dip_path(dip) %></td>

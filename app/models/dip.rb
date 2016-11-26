@@ -1,5 +1,5 @@
 class Dip < ApplicationRecord
-  has_one :activity
-  has_one :location_type
+  belongs_to :activity
+  belongs_to :location_type
   has_many :locations, through: :selections
 end

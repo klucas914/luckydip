@@ -12,9 +12,9 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
 
   <div class="field">
@@ -24,7 +24,7 @@
 
   <div class="field">
     <%= f.label :activities_available %>
-    <%= f.select :activity_id, options_for_select(@activities.collect{ |a| [a.name, a.id]}) %>
+    <%= f.select :activity_id, options_for_select(@activities.collect{ |a| [a.name, a.id]}), {}, multiple: true %>
   </div>
 
 <div class="field">
@@ -33,7 +33,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-success" %>
   </div>
 <% end %>
 </div>
