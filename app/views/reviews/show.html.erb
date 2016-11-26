@@ -6,9 +6,8 @@
       <div class="card">
       <div class="card-block">
         <h2 class="card-title">Review for <%= @review.location_id %></h2>
-         <p class="card-text"><h2>Will anything show up??<%= @review.comments %></h2></p>
-        
-
+         <p class="card-text">
+         <h2>Will anything show up?? <%= @review.comments %> </h2></p>
 
 <%= link_to 'Edit', edit_review_path(@review) %> 
 

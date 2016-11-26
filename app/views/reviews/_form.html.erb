@@ -1,10 +1,20 @@
 <div class="container">
 <%= form_for(review) do |f| %>
-  
+  <% if review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+      <% review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= f.label :location_id %>
-    <%= f.select :location_id, options_for_select(@locations.collect{ |l| [l.name, l.id]}) %>
+    <%= f.select :location_id, options_for_select(location_options.collect{ |l| [l.name, l.id]}) %>
   </div>
 
   <div class="field">
@@ -16,5 +26,7 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>
+
 </div>

@@ -24,7 +24,6 @@ Rails.application.routes.draw do
   resources :activities
   resources :distances, only: [:new, :create]
   resources :reviews
-  
   root 'welcome#index'
 
 end

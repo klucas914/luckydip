@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
-    @locations = Location.all
+   
   end
 
   def edit
@@ -20,9 +20,8 @@ class ReviewsController < ApplicationController
   end
 
   def create
-  	@review = Review.new(params[:id])
-    @location = Location.all
-
+  	@review = Review.new(review_params)
+   
     respond_to do |format|
       if @review.save
         format.html { redirect_to @review, notice: 'Review was successfully created.' }
@@ -35,6 +34,7 @@ class ReviewsController < ApplicationController
    end
  
   def update
+    
     respond_to do |format|
       if @review.update(review_params)
         format.html { redirect_to @review, notice: 'Review was successfully updated.' }
