@@ -4,18 +4,19 @@
 <p>
 <div class="container">
   <div align="center">
-    <%= link_to image_tag("luckydip.png", alt: "LuckyDip logo") %>
+    <%= link_to image_tag("luckydiplogo2.png") %>
+    <h1>Locations</h1>
     <p>
-  <div class="card">
-    <div class="card-block">
-      <h1 class="card-title">User-Added Locations</h1>
-<p>
-<p class="card-text">
-Enter information for a <strong>public</strong> location.<br /> Location will be reviewed by Lucky Dip and added to the dips if it is a public place.<br /> Otherwise, the location will be removed.<br /><p>
-<%= link_to 'New Location', new_location_path, class: 'btn btn-success' %>
-<p>
-<%= link_to 'Calculate Distances to/from Locations', new_distance_path %>
-<table class="table table-striped">
+
+  <%= link_to 'New Location', new_location_path, class: 'btn btn-primary' %>
+  <p>
+  <%= link_to 'Calculate Distances to/from Locations', new_distance_path %>
+</div>
+
+<div class="card">
+  <div class="container-fluid">
+ 
+  <table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -50,4 +51,5 @@ Enter information for a <strong>public</strong> location.<br /> Location will be
 
 </div>
 </div>
+
 </div>

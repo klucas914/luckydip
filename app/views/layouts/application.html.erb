@@ -2,15 +2,38 @@
 <html>
   <head>
     <title>Lucky Dip</title>
+    
     <%= csrf_meta_tags %>
+    
+    <meta charset="utf-8">
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    
   </head>
 
 <body>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
+<nav class="navbar navbar-toggleable-md navbar-light">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="nav navbar-nav">
+        <li class="active"><a class="nav-link" href="<%= new_dip_path %> ">Home<span class="sr-only"></span></a></li>
+        <li class="active"><a class="nav-link" href="<%= locations_path %> ">Manage Locations<span class="sr-only"></span></a></li>
+        <li class="active"><a class="nav-link" href="<%= activities_path %> ">Manage Activities<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a class="nav-link" href="<%= new_review_path %>">Reviews</a></li>
+
+      </ul>
+  </div>
+
+
+
+
+
+  <!--<div class="container-fluid">
     <div class="navbar-header">
      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
        <span class="sr-only">Toggle navigation</span>
@@ -18,14 +41,15 @@
        <span class="icon-bar"></span>
       </button>
       <!--<a class="navbar-brand" href="<%= root_path %>">Home</a>-->
-     </div>
+     <!--</div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="<%= locations_path %> ">Add a Location<span class="sr-only">(current)</span></a></li>
-        <li class="active"><a href="<%= activities_path %> ">Add an Activity<span class="sr-only">(current)</span></a></li>
-        <li class="nav-item"><a class="nav-link" href="<%= new_review_path %>">Review a Location</a>
-        </li>
+      <ul class="nav navbar-nav">
+        <li class="active"><a class="nav-link" href="<%= new_dip_path %> ">Home<span class="sr-only"></span></a></li>
+        <li class="active"><a class="nav-link" href="<%= locations_path %> ">Manage Locations<span class="sr-only"></span></a></li>
+        <li class="active"><a class="nav-link" href="<%= activities_path %> ">Manage Activities<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a class="nav-link" href="<%= new_review_path %>">Reviews</a></li>
+
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
