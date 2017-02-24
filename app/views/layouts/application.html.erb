@@ -8,25 +8,35 @@
     <meta content='width=device-width, initial-scale=1.0' name='viewport'>
   </head>
 
-  <body>
-    <nav class="navbar navbar-dark bg-inverse">
-<a class="navbar-brand" href="<%= root_path %>">Home</a>
-<!-- Links -->
-<ul class="nav navbar-nav">
-  <li class="nav-item">
-    <a class="nav-link" href="<%= locations_path %> ">Add a Location</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="<%= activities_path %> ">Add an Activity</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="<%= new_review_path %>">Review a Location</a>
-  </li>
-</ul>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+       <span class="sr-only">Toggle navigation</span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<%= root_path %>">Home</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="<%= locations_path %> ">Add a Location<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="<%= activities_path %> ">Add an Activity<span class="sr-only">(current)</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="<%= new_review_path %>">Review a Location</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
 </nav>
+
 <% flash.each do |name, msg| %>
   <%= content_tag(:div, msg.html_safe, class: "alert alert-#{name}") %>
 <% end %>
-    <%= yield %>
-  </body>
+
+<%= yield %>
+
+</body>
+
 </html>
