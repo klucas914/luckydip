@@ -1,10 +1,10 @@
 <p>
 <div class="container">
   <div align="center">
-    <%= link_to image_tag("luckydip.png", alt: "LuckyDip logo") %>
+    <%= link_to image_tag("luckydiplogo2.png") %>
     <p>
-  </div>
-  <div class="row">
+  
+  <!--<div class="row">
     <div class="col-sm-4">
       <div class="card">
       <div class="card-block">
@@ -41,33 +41,17 @@
    </div>
   </div>
 </div>
+-->
 
 
-
-<div class="row">
+<!--<div class="row">
   <div class="col-sm-7">
     <div class="card">
     <div class="card-block">
-        <h2 class="card-title">Give this a try...</h2>
-        <p class="card-text">
-
-<p>
+        -->
 
 
-<%# if @selections.empty? %>
-      <tr>
-        <td> </td>
-        
-      <%# end %>
-      </tr>
-
-<%# @selections.each do |selection| %>
-       <tr>
-         <td></td>
-         <td></td>
-        </tr>
-
-<% #end %>
+  <h2>Give this a try...</h2>     
 
   <p><strong>Location Name:</strong> </p>
 
@@ -78,9 +62,9 @@
   <p>
   <%= link_to 'Get directions to this location' %><br />
   <%= link_to 'See reviews for this location.', reviews_path %>
-
+</div>
 <div align="center">
-<%= link_to 'New Dip', new_dip_path, class: "btn btn-success" %>
+<%= link_to 'New Dip', new_dip_path, class: "btn btn-primary" %>
 </div>
 <p>
 </p>
