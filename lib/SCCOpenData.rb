@@ -5,8 +5,12 @@ require 'httparty'
   #end
 class SCCOpenData
   include HTTParty
-  base_uri 'www.gisservices.scc.qld.gov.au'
+  
+  base_uri = 'www.gisservices.scc.qld.gov.au'
+  
   default_timeout 1
+ 
+  attr_accessor :fields, :features
 
   def base_path
     "arcgis/rest/services/Society/Society_SCRC/MapServer"
