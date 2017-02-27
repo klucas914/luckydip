@@ -1,35 +1,41 @@
 <div class="container">
 <p>
 <div class="card">
-      <div class="card-block">
+  <div class="card-block">
+    <div class="row">
+      <div class="span8">
+        <p>
+        <%= link_to 'Back', locations_path %>
+        <div class="container"> 
+         <p>
+          <h1><%= @location.name %></h1><br />
+          <h3><%= @location.address %></h3><br />
+          <h5>Description here if one is provided, otherwise blank.</h5><br>
 
-<p>
-  <%= link_to 'Back', locations_path %>
-  <p>
-  <strong>Name:</strong>
-  <%= @location.name %><br />
-  <strong>Address:</strong>
-  <%= @location.address %><br />
+          <h4>Activities:</h4>
+            <% @location.activities.each do |activity| %>
+            <%= activity.name %><br />
+            <% end %>
+          <br>
+          <h4>Location Type:</h4>
+            <% @location.location_types.each do |location_type| %>
+            <%= location_type.name %><br />
+          <% end %>
+          </p>
+        </div>
+      </div>
+<!--<p>Coordinates: <%= @location.latitude %> <%= @location.longitude %> <br />-->
+      <div class="span4">
+        <div class="container">
+        <%= link_to 'Calculate distance from here', new_distance_path %>
+        <p>
 
-  <strong>Activities:</strong>
-  <% @location.activities.each do |activity| %>
-    <%= activity.name %><br />
-  <% end %>
-
-  <strong>Location Type:</strong>
-  <% @location.location_types.each do |location_type| %>
-    <%= location_type.name %><br />
-  <% end %>
-</p>
-<p>Coordinates: <%= @location.latitude %> <%= @location.longitude %> <br />
-<%= link_to 'Calculate distance from here', new_distance_path %>
-<p>
-
-<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@location.latitude},#{@location.longitude}&markers=#{@location.latitude},#{@location.longitude}&zoom=7&size=640x400&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
+       <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@location.latitude},#{@location.longitude}&markers=#{@location.latitude},#{@location.longitude}&zoom=7&size=640x400&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
               class: 'img-fluid img-rounded', alt: "#{@location.name} on the map"%>
-<p>
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
-</div>
+
+       </div>
+      </div>
+    </div>
+  </div>
 </div>
 </div>

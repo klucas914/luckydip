@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       get :activities
     end
     member do
-      post :create_selection
+     post :create_selection
     end
   end
   
