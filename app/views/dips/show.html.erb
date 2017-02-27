@@ -26,7 +26,11 @@
         <strong>Distance:</strong>
         <%= @dip.distance %> km away
 </p>
-
+<%#= form_tag url_for(action: :create_selection), {method: 'post'} do %> 
+      <td><%#= select_tag 'selection[activity_id]', options_for_select(Selection.activity), { class: 'form-control'} %></td>
+      <td><%#= select_tag 'selection[location_type_id]', options_for_select(Selection.location_type), { class: 'form-control'} %></td>
+      <td><%#= submit_tag "I'm feeling lucky!", class: 'btn btn-success' %></td>
+    <%# end %>
     
 
 <%= link_to 'Edit', edit_dip_path(@dip) %> 
@@ -69,14 +73,10 @@
   <p><strong>Location Address:</strong> </p>
 
   <p><strong>Distance Away:</strong></p>
-<%#= form_tag url_for(action: :create_selection), {method: 'post'} do %> 
-      <td><%#= select_tag 'selection[activity_id]', options_for_select(Selection.activity), { class: 'form-control'} %></td>
-      <td><%#= select_tag 'selection[location_type_id]', options_for_select(Selection.location_type), { class: 'form-control'} %></td>
-      <td><%#= submit_tag "I'm feeling lucky!", class: 'btn btn-success' %></td>
-    <%# end %>
+
   <p>
-  <%= link_to 'Get directions to this location' %><br />
-  <%= link_to 'See reviews for this location.', reviews_path %>
+  <%#= link_to 'Get directions to this location' %><br />
+  <%#= link_to 'See reviews for this location.', reviews_path %>
 </div>
 <div align="center">
 <%= link_to 'New Dip', new_dip_path, class: "btn btn-primary" %>

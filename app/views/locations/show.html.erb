@@ -1,16 +1,20 @@
-<div class="container">
+<div class="container-fluid">
 <p>
 <div class="card">
   <div class="card-block">
+  <%= link_to 'Back', locations_path %>
     <div class="row">
-      <div class="span8">
+      <div class="col-sm-6 col-lg-6">
         <p>
-        <%= link_to 'Back', locations_path %>
+        
         <div class="container"> 
          <p>
+          
           <h1><%= @location.name %></h1><br />
+
           <h3><%= @location.address %></h3><br />
-          <h5>Description here if one is provided, otherwise blank.</h5><br>
+          <p><%= @location.description %></p><br>
+
 
           <h4>Activities:</h4>
             <% @location.activities.each do |activity| %>
@@ -25,13 +29,17 @@
         </div>
       </div>
 <!--<p>Coordinates: <%= @location.latitude %> <%= @location.longitude %> <br />-->
-      <div class="span4">
+      <div class="col-sm-6 col-lg-6">
         <div class="container">
-        <%= link_to 'Calculate distance from here', new_distance_path %>
+        
         <p>
 
        <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@location.latitude},#{@location.longitude}&markers=#{@location.latitude},#{@location.longitude}&zoom=7&size=640x400&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
               class: 'img-fluid img-rounded', alt: "#{@location.name} on the map"%>
+<p>
+              <h5><%= link_to 'Get directions' %></h5><br>
+              <h5><%= link_to 'Calculate distance from here', new_distance_path %></h5><br>
+              <h5><%= link_to 'See reviews', reviews_path(@reviews) %></h5><br>
 
        </div>
       </div>
