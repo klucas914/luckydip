@@ -12,7 +12,7 @@
           
           <h1><%= @location.name %></h1><br />
 
-          <h3><%= @location.address %></h3><br />
+          <h4><%= @location.address %></h4><br />
           <p><%= @location.description %></p><br>
 
 
@@ -26,6 +26,7 @@
             <%= location_type.name %><br />
           <% end %>
           </p>
+          
         </div>
       </div>
 <!--<p>Coordinates: <%= @location.latitude %> <%= @location.longitude %> <br />-->
@@ -39,8 +40,14 @@
 <p>
               <h5><%= link_to 'Get directions' %></h5><br>
               <h5><%= link_to 'Calculate distance from here', new_distance_path %></h5><br>
-              <h5><%= link_to 'See reviews', reviews_path(@reviews) %></h5><br>
-
+              <h5><%= link_to "See reviews for #{@location.name}", reviews_path(@reviews) %></h5><br>
+        <div class="container">
+          <h3>Reviews for <%= @location.name %></h3><br>
+          <%= @location.reviews.each do |review| %>
+          <h5><%= review.created_at %></h5><br>
+          <h4><%= review.comments %><h4><br>
+          <% end %>
+        </div>
        </div>
       </div>
     </div>

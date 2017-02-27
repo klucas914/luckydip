@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170227061131) do
+ActiveRecord::Schema.define(version: 20170227065118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,8 +66,10 @@ ActiveRecord::Schema.define(version: 20170227061131) do
     t.float    "latitude"
     t.float    "longitude"
     t.text     "description"
+    t.integer  "review_id"
     t.index ["activity_id"], name: "index_locations_on_activity_id", using: :btree
     t.index ["location_type_id"], name: "index_locations_on_location_type_id", using: :btree
+    t.index ["review_id"], name: "index_locations_on_review_id", using: :btree
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -100,6 +102,7 @@ ActiveRecord::Schema.define(version: 20170227061131) do
   add_foreign_key "location_types_locations", "locations"
   add_foreign_key "locations", "activities"
   add_foreign_key "locations", "location_types"
+  add_foreign_key "locations", "reviews"
   add_foreign_key "reviews", "locations"
   add_foreign_key "selections", "activities"
   add_foreign_key "selections", "dips"
