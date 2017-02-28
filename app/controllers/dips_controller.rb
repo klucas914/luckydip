@@ -19,6 +19,9 @@ class DipsController < ApplicationController
     @dip = Dip.find(params[:id])
     @activity = Activity.find(@dip.activity_id)
     @location_type = LocationType.find(@dip.location_type_id)
+    #@selection = Selection.all.where(activity_id: @activity, location_type_id: @location_type)
+    #@locations = Location.all.where(activity_id: @activity, location_type_id: @location_type)
+    @locations = Location.all.where(activity_id: @activity, location_type_id: @location_type)
   end
 
   # GET /dips/new

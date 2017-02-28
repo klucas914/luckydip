@@ -40,14 +40,16 @@
 <p>
               <h5><%= link_to 'Get directions' %></h5><br>
               <h5><%= link_to 'Calculate distance from here', new_distance_path %></h5><br>
-              <h5><%= link_to "See reviews for #{@location.name}", reviews_path(@reviews) %></h5><br>
-        <div class="container">
-          <h3>Reviews for <%= @location.name %></h3><br>
+              
+        
+        <div class="list-group">
+          <h4>Reviews for <%= @location.name %></h4><br>
           <%= @location.reviews.each do |review| %>
-          <h5><%= review.created_at %></h5><br>
-          <h4><%= review.comments %><h4><br>
+            <h6 class="list-group-item-heading"><%= review.created_at.strftime("%B %e, %Y at %I:%M %p") %></h6><br>
+            <h5 class="list-group-item-text"><%= review.comments %><h5><br>
           <% end %>
         </div>
+       
        </div>
       </div>
     </div>

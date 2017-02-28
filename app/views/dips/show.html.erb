@@ -52,27 +52,22 @@
 <h2>Give this a try...</h2>  
 
 
-<div class="container">
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="luckydiplogo2.png">
-        <div class="carousel-caption">
-          <h3>Try this awesome place</h3>
-          <p>We have hiking!</p>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
+<% @locations.each do |location| %>
+  <p><strong>Location Name:</strong><br>
+  <%= link_to location.name, location %></p>
 
-     
-
-  <p><strong>Location Name:</strong> </p>
-
-  <p><strong>Location Address:</strong> </p>
+  <p><strong>Location Address:</strong> <br>
+  <%= location.address %></p>
 
   <p><strong>Distance Away:</strong></p>
+
+<% end %>  
+
+  
+
+  
+
+  
 
   <p>
   <%#= link_to 'Get directions to this location' %><br />
