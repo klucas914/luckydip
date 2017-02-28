@@ -51,18 +51,18 @@
         -->
 <h2>Give this a try...</h2>  
 
-
+<div class="container">
 <% @locations.each do |location| %>
-  <p><strong>Location Name:</strong><br>
-  <%= link_to location.name, location %></p>
-
-  <p><strong>Location Address:</strong> <br>
-  <%= location.address %></p>
+  
+  <p>
+  <h3><%= link_to location.name, location %></h3>
+   
+  <p><%= location.address %></p>
 
   <p><strong>Distance Away:</strong></p>
-
+ 
 <% end %>  
-
+</div>
   
 
   
