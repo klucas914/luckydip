@@ -3,9 +3,11 @@
 <div class="card">
   <div class="card-block">
   <%= link_to 'Back', new_dip_path %>
+  <%= button_to 'Save Location', class: "btn btn-primary" %>
     <div class="row">
       <div class="col-sm-6 col-lg-6">
         <p>
+
         
         <div class="container"> 
          <p>
@@ -15,18 +17,18 @@
           <h4><%= @location.address %></h4><br />
           <p><%= @location.description %></p><br>
 
-
-          <h4>Activities:</h4>
-            <% @location.activities.each do |activity| %>
-            <%= activity.name %><br />
+          <div class="container">
+             <h4>Activities:</h4>
+              <% @location.activities.each do |activity| %>
+              <%= activity.name %><br />
+              <% end %>
+             <br>
+            <h4>Location Type:</h4>
+              <% @location.location_types.each do |location_type| %>
+              <%= location_type.name %><br />
             <% end %>
-          <br>
-          <h4>Location Type:</h4>
-            <% @location.location_types.each do |location_type| %>
-            <%= location_type.name %><br />
-          <% end %>
-          </p>
-          
+            </p>
+          </div>
         </div>
       </div>
 <!--<p>Coordinates: <%= @location.latitude %> <%= @location.longitude %> <br />-->
@@ -39,14 +41,13 @@
               class: 'img-fluid img-rounded', alt: "#{@location.name} on the map"%>
 <p>
               <h5><%= link_to 'Get directions' %></h5><br>
-              <h5><%= link_to 'Calculate distance from here', new_distance_path %></h5><br>
+              <h5><%#= link_to 'Calculate distance from here', new_distance_path %></h5><br>
               
-        
-        <div class="list-group">
-          <h4>Reviews for <%= @location.name %></h4><br>
+        <h4>Reviews for <%= @location.name %></h4><br>
+        <div class="panel panel-default">
           <%= @location.reviews.each do |review| %>
-            <h6 class="list-group-item-heading"><%= review.created_at.strftime("%B %e, %Y at %I:%M %p") %></h6><br>
-            <h5 class="list-group-item-text"><%= review.comments %><h5><br>
+            <div class="panel-heading"><%= review.created_at.strftime("%B %e, %Y at %I:%M %p") %></div><br>
+            <div class="panel-body"><%= review.comments %></div><br>
           <% end %>
         </div>
        
