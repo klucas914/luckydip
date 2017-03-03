@@ -88,9 +88,18 @@ class LocationsController < ApplicationController
     end
   end 
 
+  def unsave
+    @location = Location.find(params[:id])
+    if @location.update(saved: :false)
+      flash[:notice] = "#{@location.name} has been removed from saved locations!"
+      redirect_to store_locations_path
+    else
+      flash[:alert] = "There was an error removing this location from saved locations. Please try again."
+    end
+  end
+
   def store
     @locations = Location.where("saved IS TRUE").reverse.each
-     
   end
 
   # DELETE /locations/1

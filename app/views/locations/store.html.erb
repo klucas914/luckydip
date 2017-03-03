@@ -1,7 +1,13 @@
-<div class="container">
-  <h1 class>Saved Locations</h1>
-
-  <div class="container">
+<div class="container-fluid">
+  <div class="row">
+    <div align="center"><%= link_to image_tag("luckydiplogo2.png") %>
+   <h1 class>Saved Locations</h1>
+   </div>
+  </div>
+  
+  <div class="row">
+    <div align="center">
+      <div class="container">
   <% @locations.each do |location| %>
   <p>
   <div class="card" style="width: 20rem;">
@@ -11,8 +17,10 @@
       <p><%= location.address %></p>
 
       <p><strong>Distance Away:</strong></p>
-    
-    <%= link_to 'Leave a Review', new_review_path, class: "btn btn-primary" %>
+
+    <%= link_to 'Check In', class: "btn btn-primary" %><br>
+    <p><%= link_to 'Leave a Review', new_review_path, class: "btn btn-primary" %></p>
+    <%= link_to 'Remove', unsave_location_path(location), method: :unsave, data: { confirm: 'Are you sure?' } %>
     </div>
   </div>
   <% end %>  
@@ -20,4 +28,6 @@
   </div>
 
   
+</div>
+</div>
 </div>
