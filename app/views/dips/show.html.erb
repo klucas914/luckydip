@@ -54,14 +54,16 @@
 
 <div class="container">
 <% @locations.each do |location| %>
-  
   <p>
-  <h3><%= link_to location.name, location %></h3>
+  <div class="card" style="width: 20rem;">
+    <div class="card-block">
+      <h3><%= link_to location.name, location %></h3>
    
-  <p><%= location.address %></p>
+      <p><%= location.address %></p>
 
-  <p><strong>Distance Away:</strong></p>
- 
+      <p><strong>Distance Away:</strong></p>
+    </div>
+ </div>
 <% end %>  
 </div>
   

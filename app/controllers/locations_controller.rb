@@ -24,6 +24,7 @@ class LocationsController < ApplicationController
   def show
     @location = Location.find(params[:id])
     @review = Review.all
+
     
     
   end
@@ -77,6 +78,20 @@ class LocationsController < ApplicationController
     end
   end
 
+  def save
+    @location = Location.find(params[:id])
+    if @location.update(saved: :true)
+      flash[:notice] = "#{@location.name} has been added to saved locations!"
+      redirect_to new_dip_path
+    else
+      flash[:alert] = "There was an error adding this location to saved locations. Please try again."
+    end
+  end 
+
+  def store
+    @locations = Location.where("saved IS TRUE").reverse.each 
+  end
+
   # DELETE /locations/1
   # DELETE /locations/1.json
   def destroy
@@ -96,6 +111,6 @@ class LocationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
-      params.require(:location).permit(:name, :address, :description, :lat, :lon, :review => [:comments], :activity => [:name], :location_type => [:name], activity_ids: [], location_type_ids: [])
+      params.require(:location).permit(:name, :address, :saved, :description, :lat, :lon, :review => [:comments], :activity => [:name], :location_type => [:name], activity_ids: [], location_type_ids: [])
     end
 end

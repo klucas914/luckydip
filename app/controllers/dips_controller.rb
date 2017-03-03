@@ -20,6 +20,8 @@ class DipsController < ApplicationController
     @activity = Activity.find(@dip.activity_id)
     @location_type = LocationType.find(@dip.location_type_id)
     @locations = Location.all.where(activity_id: @activity, location_type_id: @location_type)
+  
+  #@locations = Location.where("locations.activity_id == dip.activity_id && locations.location_type_id == dip.location_type_id")
   end
 
   # GET /dips/new
@@ -36,18 +38,7 @@ class DipsController < ApplicationController
     @location_types = LocationType.all
   end
 
-#I think the following code is more correct to create a dip, but haven't gotten it working.
-#  def create
-#   @dip = Dip.new(params[:id])
-#    @activity = Dip.find_by(id: params[:activity])
-#    @location_type = Dip.find_by(id: params[:location_type])
-#    if @activity && @location_type
-#      flash[:success] =
-#        "You are looking for a place for <b>#{@activity.name}</b> and <b>#{@location_type.name}</b>. Let's see what we can do."
-#    end
-#    redirect_to dips_path
-  # POST /dips
-  # POST /dips.json
+
   def create
     @dip = Dip.new(dip_params)
 
@@ -76,26 +67,28 @@ class DipsController < ApplicationController
     end
   end
   
-  def create_selection
-    dip = Dip.find(params[:id])
+  
 
-    activity = dip.activity_id
+  #def create_selection
+   # dip = Dip.find(params[:id])
 
-    location_type = dip.location_type_id
+    #activity = dip.activity_id
 
-    selection = Selection.new(activity_id: activity, location_type_id: location_type)
+    #location_type = dip.location_type_id
 
-    if selection.save!
-      redirect to dip_path(@dip)
-    else
-      redirect to new_dip_path
-    end
+    #selection = Selection.new(activity_id: activity, location_type_id: location_type)
 
-  end
+    #if selection.save!
+      #redirect to dip_path(@dip)
+    #else
+     # redirect to new_dip_path
+    #end
+
+  #end
 
 
-  def pick_location
-  end
+  #def pick_location
+  #end
   # DELETE /dips/1
   # DELETE /dips/1.json
   def destroy
