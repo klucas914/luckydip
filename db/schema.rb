@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303110152) do
+ActiveRecord::Schema.define(version: 20170303113234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20170303110152) do
     t.integer  "review_id"
     t.boolean  "saved",            default: false
     t.boolean  "checkin",          default: false
+    t.datetime "checkin_time"
     t.index ["activity_id"], name: "index_locations_on_activity_id", using: :btree
     t.index ["location_type_id"], name: "index_locations_on_location_type_id", using: :btree
     t.index ["review_id"], name: "index_locations_on_review_id", using: :btree

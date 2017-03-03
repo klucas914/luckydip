@@ -28,6 +28,9 @@ Rails.application.routes.draw do
       patch :unsave
       post :unsave
     end
+    member do
+      post :checkin
+    end
     collection do
       get :completed
     end

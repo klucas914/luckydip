@@ -104,15 +104,16 @@ class LocationsController < ApplicationController
 
   def checkin
     @location = Location.find(params[:id])
-    if @location.update(checkin: :true)
-      redirect_to completed_trips_path
+
+    if @location.update(checkin_time: Time.now)
+      redirect_to completed_locations_path
     else
       flash[:alert] = "There was an error checking in. Please try again." 
     end 
   end
 
   def completed
-    @locations = Location.where("checkin IS TRUE").reverse.each
+    @locations = Location.where("checkin_time IS NOT NULL").reverse.each
   end
   # DELETE /locations/1
   # DELETE /locations/1.json
@@ -133,6 +134,6 @@ class LocationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
-      params.require(:location).permit(:name, :address, :saved, :description, :lat, :lon, :review => [:comments], :activity => [:name], :location_type => [:name], activity_ids: [], location_type_ids: [])
+      params.require(:location).permit(:name, :address, :saved, :checkin, :checkin_time, :description, :lat, :lon, :review => [:comments], :activity => [:name], :location_type => [:name], activity_ids: [], location_type_ids: [])
     end
 end

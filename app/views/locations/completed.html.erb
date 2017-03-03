@@ -5,4 +5,27 @@
    </div>
   </div>
 
+<div class="row">
+    <div align="center">
+      <div class="container">
+  <% @locations.each do |location| %>
+  <p>
+  <div class="card" style="width: 20rem;">
+    <div class="card-block">
+      <h3><%= link_to location.name, location %></h3>
+      
+   
+    
+   
+    <%= button_to 'Leave a Review', new_review_path, class: "btn btn-primary" %>
+    <%= link_to 'Remove', unsave_location_path(location), method: :unsave, data: { confirm: 'Are you sure?' } %>
+    </div>
+  </div>
+  <% end %>  
+  </div>
+
+  
+</div>
+</div>
+</div>
 </div>

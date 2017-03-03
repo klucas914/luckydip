@@ -23,6 +23,8 @@
       <th>Address</th>
       <th>Activity Tags</th>
       <th>Location Tags</th>
+      <th>Saved?</th>
+      <th>Checkin?</th>
       <!--<th>Latitude</th>
       <th>Longitude</th>-->
       <th colspan="3"></th>
@@ -37,6 +39,7 @@
         <td><%= location.activities.pluck(:name).join(", ") %></td>
         <td><%= location.location_types.pluck(:name).join(", ") %></td>
         <td><%= location.saved %></td>
+        <td><%= location.checkin %></td>
         <!--<td><%#= location.latitude %></td>
         <td><%#= location.longitude %></td>-->
         <td><%= link_to 'Edit', edit_location_path(location) %></td>

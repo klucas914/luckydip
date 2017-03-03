@@ -18,8 +18,7 @@
 
       <p><strong>Distance Away:</strong></p>
 
-    <%= link_to 'Check In', class: "btn btn-primary" %><br>
-    <p><%= link_to 'Leave a Review', new_review_path, class: "btn btn-primary" %></p>
+    <%= button_to 'Check In', checkin_location_path(location), class: "btn btn-primary" %><br>
     <%= link_to 'Remove', unsave_location_path(location), method: :unsave, data: { confirm: 'Are you sure?' } %>
     </div>
   </div>
