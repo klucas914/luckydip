@@ -99,7 +99,7 @@ class LocationsController < ApplicationController
   end
 
   def store
-    @locations = Location.where("saved IS TRUE").reverse.each
+    @locations = Location.where("saved IS TRUE and checkin_time IS NULL").reverse.each
   end
 
   def checkin

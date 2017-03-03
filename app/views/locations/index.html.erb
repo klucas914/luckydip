@@ -39,7 +39,7 @@
         <td><%= location.activities.pluck(:name).join(", ") %></td>
         <td><%= location.location_types.pluck(:name).join(", ") %></td>
         <td><%= location.saved %></td>
-        <td><%= location.checkin %></td>
+        <td><%= location.checkin_time %></td>
         <!--<td><%#= location.latitude %></td>
         <td><%#= location.longitude %></td>-->
         <td><%= link_to 'Edit', edit_location_path(location) %></td>

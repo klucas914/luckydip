@@ -13,7 +13,7 @@
   <div class="card" style="width: 20rem;">
     <div class="card-block">
       <h3><%= link_to location.name, location %></h3>
-      
+      <p>You checked into this location on <%= location.checkin_time.strftime("%B %e, %Y at %I:%M %p") %></p>
    
     
    
