@@ -102,6 +102,18 @@ class LocationsController < ApplicationController
     @locations = Location.where("saved IS TRUE").reverse.each
   end
 
+  def checkin
+    @location = Location.find(params[:id])
+    if @location.update(checkin: :true)
+      redirect_to completed_trips_path
+    else
+      flash[:alert] = "There was an error checking in. Please try again." 
+    end 
+  end
+
+  def completed
+    @locations = Location.where("checkin IS TRUE").reverse.each
+  end
   # DELETE /locations/1
   # DELETE /locations/1.json
   def destroy

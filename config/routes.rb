@@ -28,6 +28,9 @@ Rails.application.routes.draw do
       patch :unsave
       post :unsave
     end
+    collection do
+      get :completed
+    end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :location_types
