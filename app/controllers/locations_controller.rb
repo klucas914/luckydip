@@ -89,7 +89,8 @@ class LocationsController < ApplicationController
   end 
 
   def store
-    @locations = Location.where("saved IS TRUE").reverse.each 
+    @locations = Location.where("saved IS TRUE").reverse.each
+     
   end
 
   # DELETE /locations/1
