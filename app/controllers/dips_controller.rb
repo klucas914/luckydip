@@ -19,7 +19,7 @@ class DipsController < ApplicationController
     @dip = Dip.find(params[:id])
     @activity = Activity.find(@dip.activity_id)
     @location_type = LocationType.find(@dip.location_type_id)
-    
+    @locations = @dip.matching_locations
 
     #@locations = @dip.locations.all
   
