@@ -1,17 +1,23 @@
 Rails.application.routes.draw do
   resources :dips do |d|
+    member do
+      post :create_selection
+    end
+    collection do
+      get :locations
+    end
     collection do
       get :location_types
     end
     collection do
       get :activities
     end
-    member do
-     post :create_selection
-    end
   end
   
   resources :locations do 
+    collection do
+      get :dips
+    end
     collection do
   		get :location_types
   	end
@@ -25,8 +31,7 @@ Rails.application.routes.draw do
       post :save
     end
     member do
-      patch :unsave
-      post :unsave
+      delete :unsave
     end
     member do
       post :checkin

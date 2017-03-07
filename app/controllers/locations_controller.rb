@@ -1,6 +1,7 @@
+#require 'SCCEventsCalendar'
+
 class LocationsController < ApplicationController
   #before_action :set_location, only: [:show, :edit, :update, :destroy]
-
 
   # GET /locations.json
   def get_location
@@ -78,6 +79,7 @@ class LocationsController < ApplicationController
     end
   end
 
+
   def save
     @location = Location.find(params[:id])
     if @location.update(saved: :true)
@@ -134,6 +136,6 @@ class LocationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
-      params.require(:location).permit(:name, :address, :saved, :checkin, :checkin_time, :description, :lat, :lon, :review => [:comments], :activity => [:name], :location_type => [:name], activity_ids: [], location_type_ids: [])
+      params.require(:location).permit(:name, :address, :saved, :checkin, :checkin_time, :description, :URL, :lat, :lon, :review => [:comments], :activity => [:name], :location_type => [:name], activity_ids: [], location_type_ids: [])
     end
 end
