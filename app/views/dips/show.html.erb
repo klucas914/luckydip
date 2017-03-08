@@ -4,51 +4,7 @@
     <%= link_to image_tag("luckydiplogo2.png"), new_dip_path %>
     <p>
   
-  <!--<div class="row">
-    <div class="col-sm-4">
-      <div class="card">
-      <div class="card-block">
-        <h2 class="card-title">Here's what you've said...</h2>
-         <p class="card-text">
-<p>
-<p>
-        <strong>You're in the mood for:</strong>
-        <%= @activity.name %>
-</p>
-
-<p>
-        <strong>At this type of place:</strong>
-        <%= @location_type.name %>
-</p>
-
-
-<p>
-        <strong>Distance:</strong>
-        <%= @dip.distance %> km away
-</p>
-<%#= form_tag url_for(action: :create_selection), {method: 'post'} do %> 
-      <td><%#= select_tag 'selection[activity_id]', options_for_select(Selection.activity), { class: 'form-control'} %></td>
-      <td><%#= select_tag 'selection[location_type_id]', options_for_select(Selection.location_type), { class: 'form-control'} %></td>
-      <td><%#= submit_tag "I'm feeling lucky!", class: 'btn btn-success' %></td>
-    <%# end %>
-    
-
-<%= link_to 'Edit', edit_dip_path(@dip) %> 
-
-<p>
-</p>
   
-   </div>
-  </div>
-</div>
--->
-
-
-<!--<div class="row">
-  <div class="col-sm-7">
-    <div class="card">
-    <div class="card-block">
-        -->
 <h2>Give this a try...</h2>  
 
 
@@ -58,7 +14,7 @@
   <p>
   <div class="card" style="width: 20rem;">
     <div class="card-block">
-      <h3><%= link_to location.name, location %></h3>
+      <h3><%= link_to location.name, location_dip_path(location, @dip) %></h3>
    
       <p><%= location.address %></p>
 
@@ -68,25 +24,7 @@
 <% end %>  
 </div>
   
-
-  <%#= @selections.each do |selecton| %>
-    <%#= selection.location_id.name %>
-  <%# end %>
-
-  
-
-  <p>
-  <%#= link_to 'Get directions to this location' %><br />
-  <%#= link_to 'See reviews for this location.', reviews_path %>
 </div>
-<div align="center">
-<%#= link_to 'New Dip', new_dip_path, class: "btn btn-primary" %>
-</div>
-<p>
-</p>
-     </div>
-    </div>
-  </div>
 </div>
   
  

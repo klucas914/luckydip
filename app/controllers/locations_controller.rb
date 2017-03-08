@@ -1,4 +1,5 @@
-#require 'SCCEventsCalendar'
+#require 'soda/client'
+require 'httparty'
 
 class LocationsController < ApplicationController
   #before_action :set_location, only: [:show, :edit, :update, :destroy]
@@ -18,14 +19,16 @@ class LocationsController < ApplicationController
     @locations = Location.all
     @activities = Activity.all
     @location_types = LocationType.all
+    
+
   end
 
   # GET /locations/1
   # GET /locations/1.json
   def show
     @location = Location.find(params[:id])
-    @review = Review.all
-
+    @reviews = @location.reviews.all
+   
     
     
   end
@@ -116,6 +119,7 @@ class LocationsController < ApplicationController
 
   def completed
     @locations = Location.where("checkin_time IS NOT NULL").reverse.each
+    @reviews = Review.all
   end
   # DELETE /locations/1
   # DELETE /locations/1.json

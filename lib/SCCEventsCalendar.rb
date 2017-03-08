@@ -7,11 +7,7 @@ class SCCEventsCalendar
   def parks
   response = HTTParty.get(API_URL)
    # TODO more error checking (500 error, etc)
-   response.parsed_response
-   response[]["name"]
+   response.parsed_response["name"]
   end
 
-  def self
-
-  end
 end

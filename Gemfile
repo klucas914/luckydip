@@ -56,3 +56,6 @@ gem 'httparty'
 gem 'chosen-rails'
 
 gem 'jquery-turbolinks'
+
+gem 'soda-ruby', :require => 'soda'
+
