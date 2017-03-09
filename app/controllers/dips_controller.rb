@@ -19,8 +19,10 @@ class DipsController < ApplicationController
     @dip = Dip.find(params[:id])
     @activity = Activity.find(@dip.activity_id)
     @location_type = LocationType.find(@dip.location_type_id)
-    @locations = @dip.matching_locations
-
+    ip_address = "49.176.105.223"
+    #@ip_address = request.remote_ip
+    coordinates = Geocoder.coordinates(ip_address)
+    @locations = @dip.matching_locations(coordinates[0], coordinates[1])
     #@locations = @dip.locations.all
   
   end
