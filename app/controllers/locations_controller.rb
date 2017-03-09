@@ -28,6 +28,7 @@ class LocationsController < ApplicationController
   def show
     @location = Location.find(params[:id])
     @reviews = @location.reviews.all
+    coordinates = Geocoder.coordinates("4 Bega Pl. Parrearra, QLD 4575")
    
     
     

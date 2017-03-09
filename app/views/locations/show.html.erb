@@ -40,9 +40,9 @@
        <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@location.latitude},#{@location.longitude}&markers=#{@location.latitude},#{@location.longitude}&zoom=13&size=640x400&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
               class: 'img-fluid img-rounded', alt: "#{@location.name} on the map"%>
 <p>
-              <h5><%= link_to 'Get directions' %></h5><br>
+              <h5><%= link_to 'Get Directions' %></h5><br>
               
-              
+              <!--{}"https://maps.googleapis.com/maps/api/directions/json?origin=coordinates&destination=#{@location.latitude},#{@location.longitude}&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8" -->
         <h4>Reviews for <%= @location.name %></h4><br>
         <div class="panel panel-default">
           <%= @reviews.each do |review| %>
