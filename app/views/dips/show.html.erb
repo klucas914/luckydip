@@ -14,11 +14,11 @@
   <p>
   <div class="card" style="width: 20rem;">
     <div class="card-block">
-      <h3><%= link_to location.name, location_dip_path(location, @dip) %></h3>
+      <h3><%= link_to location.name, location_path(location) %></h3>
    
       <p><%= location.address %></p>
 
-      <p><strong>Distance Away:</strong></p>
+      <p><strong>Distance Away: <%= location.distance.round %> km</strong></p>
     </div>
  </div>
 <% end %>  

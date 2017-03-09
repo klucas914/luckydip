@@ -6,7 +6,7 @@ results = client.get("adry-tzke", :$limit => 5000)
 
 @park_name = results.parse["name"]
 
-#puts "Got #{results.count} results. Dumping first results:"
-#results.first.each do |k, v|
- # puts "#{key}: #{value}"
+puts "Got #{results.count} results. Dumping first results:"
+results.first.each do |k, v|
+ puts "#{key}: #{value}"
 end

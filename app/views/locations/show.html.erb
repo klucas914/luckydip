@@ -37,11 +37,11 @@
         
         <p>
 
-       <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@location.latitude},#{@location.longitude}&markers=#{@location.latitude},#{@location.longitude}&zoom=7&size=640x400&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
+       <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@location.latitude},#{@location.longitude}&markers=#{@location.latitude},#{@location.longitude}&zoom=13&size=640x400&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
               class: 'img-fluid img-rounded', alt: "#{@location.name} on the map"%>
 <p>
               <h5><%= link_to 'Get directions' %></h5><br>
-              <h5><%#= link_to 'Calculate distance from here', new_distance_path %></h5><br>
+              
               
         <h4>Reviews for <%= @location.name %></h4><br>
         <div class="panel panel-default">
