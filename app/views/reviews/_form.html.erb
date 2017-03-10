@@ -12,6 +12,7 @@
     </div>
   <% end %>
 
+  
   <div class="field">
     <%= f.label :location_id %><br>
     <%= f.select :location_id, options_for_select(location_options.collect{ |l| [l.name, l.id]}) %>

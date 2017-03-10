@@ -7,11 +7,12 @@ class ReviewsController < ApplicationController
 
   def show
   	@review = Review.find(params[:id])
-  	@location = Location.all
+  	@location = @review.location
   end
 
   def new
     @review = Review.new
+    @location = Location.find(params[:location_id])
    
   end
 
@@ -21,6 +22,7 @@ class ReviewsController < ApplicationController
 
   def create
   	@review = Review.new(review_params)
+    
    
     respond_to do |format|
       if @review.save

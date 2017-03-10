@@ -10,13 +10,12 @@
       <div class="container">
   <% @locations.each do |location| %>
   <p>
-  <div class="card" style="width: 20rem;">
+  <div class="card">
     <div class="card-block">
       <h3><%= link_to location.name, location %></h3>
    
       <p><%= location.address %></p>
 
-      <p><strong>Distance Away:</strong></p>
 
     <%= button_to 'Check In', checkin_location_path(location), class: "btn btn-primary" %><br>
     <%= link_to 'Remove', unsave_location_path(location), method: :unsave, data: { confirm: 'Are you sure?' } %>
