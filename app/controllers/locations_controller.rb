@@ -27,7 +27,7 @@ class LocationsController < ApplicationController
   # GET /locations/1.json
   def show
     @location = Location.find(params[:id])
-    @reviews = @location.reviews.all
+    @reviews = @location.reviews
     coordinates = Geocoder.coordinates("4 Bega Pl. Parrearra, QLD 4575")
    
     
@@ -139,6 +139,7 @@ class LocationsController < ApplicationController
       @location = Location.find(params[:id])
     end
 
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
       params.require(:location).permit(:name, :address, :saved, :checkin, :checkin_time, :description, :URL, :lat, :lon, :review => [:comments], :activity => [:name], :location_type => [:name], activity_ids: [], location_type_ids: [])
