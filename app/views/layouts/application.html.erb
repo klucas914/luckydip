@@ -28,16 +28,16 @@
         <li class="active"><a class="nav-link" " href="<%= completed_locations_path %>">Completed Visits</a></li>
         <% end %>
         <% if current_user.try(:admin?) %>
-        <li class="active"><a class="nav-link" href="<%= locations_path %> ">Manage Locations (Admin)<span class="sr-only"></span></a></li>
-        <li class="active"><a class="nav-link" href="<%= activities_path %> ">Manage Activities (Admin)<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a class="nav-link" href="<%= locations_path %> ">Manage Locations<span class="sr-only"></span></a></li>
+        <li class="active"><a class="nav-link" href="<%= activities_path %> ">Manage Activities<span class="sr-only">(current)</span></a></li>
         <% end %>
     <ul class="nav navbar-nav pull-right">
         <% if user_signed_in? %>
           <li class="active"><a class="nav-link" href="<%= edit_user_registration_path %>"><%= current_user.name %>'s Profile</a></li>
           <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
         <% else %>
-          <li><%= link_to 'Log In', new_user_session_path %></li>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <li class="active"><a class="nav-link" href="<%= new_user_session_path %>">Log In</a></li>
+          <li class="active"><a class="nav-link" href="<%= new_user_registration_path %>">Sign Up</a></li>
         <% end %>
     </ul>
    </ul>

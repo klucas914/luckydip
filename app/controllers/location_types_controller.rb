@@ -1,6 +1,6 @@
 class LocationTypesController < ApplicationController
   before_action :set_location_type, only: [:show, :edit, :update, :destroy]
-
+  before_filter :verify_is_admin
   # GET /location_types
   # GET /location_types.json
   def index
@@ -63,6 +63,10 @@ class LocationTypesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def verify_is_admin
+      (current_user.nil?) ? redirect_to(new_user_session_path) : (redirect_to(new_user_session_path) unless current_user.admin?)
+    end
+
     def set_location_type
       @location_type = LocationType.find(params[:id])
     end
