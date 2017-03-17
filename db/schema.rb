@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317040901) do
+ActiveRecord::Schema.define(version: 20170317064219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,9 +70,11 @@ ActiveRecord::Schema.define(version: 20170317040901) do
     t.boolean  "saved",            default: false
     t.boolean  "checkin",          default: false
     t.datetime "checkin_time"
+    t.integer  "users_id"
     t.index ["activity_id"], name: "index_locations_on_activity_id", using: :btree
     t.index ["location_type_id"], name: "index_locations_on_location_type_id", using: :btree
     t.index ["review_id"], name: "index_locations_on_review_id", using: :btree
+    t.index ["users_id"], name: "index_locations_on_users_id", using: :btree
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -80,7 +82,9 @@ ActiveRecord::Schema.define(version: 20170317040901) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.text     "comments"
+    t.integer  "user_id"
     t.index ["location_id"], name: "index_reviews_on_location_id", using: :btree
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
 
   create_table "selections", force: :cascade do |t|
@@ -111,8 +115,12 @@ ActiveRecord::Schema.define(version: 20170317040901) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "admin",                  default: false
+    t.integer  "locations_id"
+    t.integer  "reviews_id"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["locations_id"], name: "index_users_on_locations_id", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["reviews_id"], name: "index_users_on_reviews_id", using: :btree
   end
 
   add_foreign_key "activities", "dips"
@@ -125,9 +133,13 @@ ActiveRecord::Schema.define(version: 20170317040901) do
   add_foreign_key "locations", "activities"
   add_foreign_key "locations", "location_types"
   add_foreign_key "locations", "reviews"
+  add_foreign_key "locations", "users", column: "users_id"
   add_foreign_key "reviews", "locations"
+  add_foreign_key "reviews", "users"
   add_foreign_key "selections", "activities"
   add_foreign_key "selections", "dips"
   add_foreign_key "selections", "location_types"
   add_foreign_key "selections", "locations"
+  add_foreign_key "users", "locations", column: "locations_id"
+  add_foreign_key "users", "reviews", column: "reviews_id"
 end

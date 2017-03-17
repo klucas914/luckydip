@@ -5,6 +5,7 @@ class Location < ApplicationRecord
   has_and_belongs_to_many :activities
   has_and_belongs_to_many :location_types
   has_many :reviews
+  has_many :users
 
   geocoded_by :address#, latitude::lat, longitude::lon   # can also be an IP address
   
