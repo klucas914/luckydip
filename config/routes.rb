@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :dips do |d|
     member do
       post :create_selection
@@ -34,7 +35,7 @@ Rails.application.routes.draw do
       post :save
     end
     member do
-      delete :unsave
+      post :unsave
     end
     member do
       post :checkin

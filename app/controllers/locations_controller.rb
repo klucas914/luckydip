@@ -88,14 +88,15 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
     if @location.update(saved: :true)
       flash[:notice] = "#{@location.name} has been added to saved locations!"
-      redirect_to new_dip_path
+      redirect_to store_locations_path
     else
       flash[:alert] = "There was an error adding this location to saved locations. Please try again."
     end
   end 
 
   def unsave
-    @location = Location.find(params[:id])
+    @location = Location.find_by(id: params[:id])
+    #@location = Location.find(params[:id])
     if @location.update(saved: :false)
       flash[:notice] = "#{@location.name} has been removed from saved locations!"
       redirect_to store_locations_path
@@ -119,7 +120,7 @@ class LocationsController < ApplicationController
   end
 
   def completed
-    @locations = Location.where("checkin_time IS NOT NULL").reverse.each
+    @locations = Location.where("checkin_time IS NOT NULL")#.reverse.each
     @reviews = Review.all
   end
   # DELETE /locations/1

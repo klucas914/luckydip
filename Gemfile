@@ -59,3 +59,5 @@ gem 'jquery-turbolinks'
 
 gem 'soda-ruby', :require => 'soda'
 
+gem 'devise'
+
