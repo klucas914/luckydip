@@ -3,7 +3,7 @@ require 'httparty'
 
 class LocationsController < ApplicationController
   #before_action :set_location, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!, except: [:show ]
   # GET /locations.json
   def get_location
     @location = Location.find(params[:id])

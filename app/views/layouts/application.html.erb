@@ -26,7 +26,16 @@
         <li class="active"><a class="nav-link" " href="<%= completed_locations_path %>">Completed Visits</a></li>
         <li class="active"><a class="nav-link" href="<%= locations_path %> ">Manage Locations (Admin)<span class="sr-only"></span></a></li>
         <li class="active"><a class="nav-link" href="<%= activities_path %> ">Manage Activities (Admin)<span class="sr-only">(current)</span></a></li>
-        
+    <ul class="nav navbar-nav pull-right">
+        <% if user_signed_in? %>
+          <li class="active"><a class="nav-link" href="<%= edit_user_registration_path %>"><%= current_user.name %>'s Profile</a></li>
+          <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to 'Log In', new_user_session_path %></li>
+          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+        <% end %>
+      </ul>
+
         
 
       </ul>
@@ -58,27 +67,15 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<%# flash.each do |name, msg| %>
-  <%#= content_tag(:div, msg.html_safe, class: "alert alert-#{name}") %>
-<%# end %>
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
 
 <%= yield %>
 
-<div class="container">
-  <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>">
-      <%= value %>
-    </div>
-  <% end %>
-</div>
-
-<%= yield :top_content %>
-
-<div class="container">
-    <h1><%= yield :header %></h1>
-  <%= yield %>
-</div>
-[...]
 
 </body>
 
