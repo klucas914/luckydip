@@ -16,16 +16,17 @@ class DipsController < ApplicationController
   # GET /dips/1
   # GET /dips/1.json
   def show
-    @dip = Dip.find(params[:id])
-    @activity = Activity.find(@dip.activity_id)
+    @dip           = Dip.find(params[:id])
+    @activity      = Activity.find(@dip.activity_id)
     @location_type = LocationType.find(@dip.location_type_id)
-    #ip_address = "49.176.105.223"
-    #@ip_address = request.remote_ip
-    #coordinates = Geocoder.coordinates("@ip_address")
-    coordinates = Geocoder.coordinates("4 Bega Pl. Parrearra, QLD 4575")
-    @locations = @dip.matching_locations(coordinates[0], coordinates[1])
     
+    if ENV.fetch("RAILS_ENV") == 'development' or ENV.fetch("RAILS_ENV") == 'test'
+      coordinates = Geocoder.coordinates("4 Bega Pl. Parrearra, QLD 4575")
+    else
+      coordinates = request.location.coordinates
+    end
 
+    @locations = @dip.matching_locations(coordinates[0], coordinates[1])
   end
 
   # GET /dips/new
