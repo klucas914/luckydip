@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+
   resources :dips do |d|
     member do
       post :create_selection
@@ -29,7 +30,7 @@ Rails.application.routes.draw do
   		get :activities
   	end
     collection do
-      get :store
+      get :store, as: :user
     end
     member do
       post :save
@@ -45,6 +46,7 @@ Rails.application.routes.draw do
     end
     resources :reviews
   end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :location_types
   resources :activities

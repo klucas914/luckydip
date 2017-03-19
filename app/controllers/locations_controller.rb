@@ -27,6 +27,7 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.json
   def show
+    @user = current_user
     @location = Location.find(params[:id])
     @reviews = @location.reviews
     coordinates = Geocoder.coordinates("4 Bega Pl. Parrearra, QLD 4575")
@@ -86,18 +87,20 @@ class LocationsController < ApplicationController
 
 
   def save
+    #@user = current_user
+    #@location = @user.location.find(params[:id])
     @location = Location.find(params[:id])
     if @location.update(saved: :true)
       flash[:notice] = "#{@location.name} has been added to saved locations!"
-      redirect_to store_locations_path
+      redirect_to user_locations_path
     else
       flash[:alert] = "There was an error adding this location to saved locations. Please try again."
     end
   end 
 
   def unsave
-    @location = Location.find_by(id: params[:id])
-    #@location = Location.find(params[:id])
+    @user = current_user
+    @location = Location.find(params[:id])
     if @location.update(saved: :false)
       flash[:notice] = "#{@location.name} has been removed from saved locations!"
       redirect_to store_locations_path
@@ -107,10 +110,13 @@ class LocationsController < ApplicationController
   end
 
   def store
+    @user = current_user
     @locations = Location.where("saved IS TRUE and checkin_time IS NULL").reverse.each
+    
   end
 
   def checkin
+    @user = current_user
     @location = Location.find(params[:id])
 
     if @location.update(checkin_time: Time.now)
@@ -121,7 +127,8 @@ class LocationsController < ApplicationController
   end
 
   def completed
-    @locations = Location.where("checkin_time IS NOT NULL")#.reverse.each
+    @user = current_user
+    @locations = Location.where("checkin_time IS NOT NULL")
     @reviews = Review.all
   end
   # DELETE /locations/1
