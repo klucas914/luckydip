@@ -8,12 +8,10 @@
   <div class="row">
     <div align="center">
       <div class="container">
-  <% @locations.each do |location| %>
+       <% @locations.each do |location| %>
   <p>
   <div class="card">
     <div class="card-block">
-      
-        
       <h3><%= link_to location.name, location %></h3>
    
       <p><%= location.address %></p>

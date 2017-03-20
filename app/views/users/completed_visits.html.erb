@@ -8,18 +8,18 @@
 <div class="row">
     <div align="center">
     <div class="container">
-      <% @locations.each do |location| %>
+      <% @check_ins.each do |check_in| %>
       <p>      
        <div class="card" >
         <div class="card-block">
-          <h3><%=link_to location.name, location %></h3>
-           <p>You checked into this location on <%#= @check_in.created_at.strftime("%B %e, %Y at %I:%M %p") %></p>  
-          <%= button_to 'Leave a Review', class: "btn btn-primary" %><br>
-          <%= form_for location, url: uncheck_location_path(location) do |f| %>
-            <%= button_tag type: "submit", data: { confirm: 'Are you sure?' } do %>
+          <h3><%= check_in.location.name %></h3>
+           <p>You checked into this location on <%= check_in.created_at.strftime("%B %e, %Y at %I:%M %p") %></p>  
+          <%#= button_to 'Leave a Review', new_location_review_path(location), class: "btn btn-primary" %><br>
+          <%#= form_for location, url: uncheck_location_path(location) do |f| %>
+            <%#= button_tag type: "submit", data: { confirm: 'Are you sure?' } do %>
             Remove
-            <% end %>
-          <% end %>
+            <% #end %>
+          <%# end %>
         </div>
         </div>
         <% end %>

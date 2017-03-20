@@ -111,10 +111,13 @@ class LocationsController < ApplicationController
 
   def create_check_in
     user = current_user
-    @location = Location.find(params[:id])
-    @check_in = CheckIn.new(location: @location, user: user)
+    location = Location.find(params[:id])
+    @check_in = CheckIn.new(location: location, user: user)
     if @check_in.save
+      #get timestamp for check in
       @check_in.created_at = Time.now
+      #remove location from saved locations
+      
       flash[:alert] = "You have added a new check in to completed trips."
       redirect_to completed_visits_path
     else

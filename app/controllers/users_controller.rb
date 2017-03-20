@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   end
 
   def completed_visits
-    @locations = current_user.locations 
-    @check_ins = CheckIn.all
+    @check_ins = current_user.check_ins
   end
 end

@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   has_many :reviews
   has_and_belongs_to_many :locations
-  has_and_belongs_to_many :check_ins
+  has_many :check_ins
 
 end

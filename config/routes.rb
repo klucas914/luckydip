@@ -49,11 +49,16 @@ Rails.application.routes.draw do
     collection do
       get :completed
     end
-    resources :reviews
+    resources :reviews do
+      member do
+        post :new
+      end
+    end
+
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :check_ins
+  
   resources :location_types
   resources :activities
   resources :distances, only: [:new, :create]
