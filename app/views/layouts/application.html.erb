@@ -25,7 +25,7 @@
         <li class="active"><a class="nav-link" href="<%= new_dip_path %>">New Dip</a></li>
         <% if user_signed_in? %>
         <li class="active"><a class="nav-link" href="<%= saved_locations_path %>">Saved Locations</a></li>
-        <li class="active"><a class="nav-link" " href="<%= completed_locations_path %>">Completed Visits</a></li>
+        <li class="active"><a class="nav-link" " href="<%= completed_visits_path %>">Completed Visits</a></li>
         <% end %>
         <% if current_user.try(:admin?) %>
         <li class="active"><a class="nav-link" href="<%= locations_path %> ">Manage Locations<span class="sr-only"></span></a></li>

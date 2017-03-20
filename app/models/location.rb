@@ -6,7 +6,7 @@ class Location < ApplicationRecord
   has_and_belongs_to_many :location_types
   has_many :reviews
   has_and_belongs_to_many :users
-  has_many :check_ins
+  has_and_belongs_to_many :check_ins
 
   geocoded_by :address#, latitude::lat, longitude::lon   # can also be an IP address
   

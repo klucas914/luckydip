@@ -4,7 +4,7 @@ require 'httparty'
 class LocationsController < ApplicationController
   #before_action :set_location, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:show ]
-  before_filter :verify_is_admin, except: [:show, :save, :unsave, :store, :checkin, :completed]
+  before_filter :verify_is_admin, except: [:show, :save, :unsave, :create_check_in, :store, :checkin, :completed]
   # GET /locations.json
   def get_location
     @location = Location.find(params[:id])
@@ -108,28 +108,19 @@ class LocationsController < ApplicationController
     end
   end
 
-  def store
-    @user = current_user
-    @locations = Location.where("saved IS TRUE and checkin_time IS NULL").reverse.each
-    
-  end
 
-  def checkin
-    @user = current_user
+  def create_check_in
+    user = current_user
     @location = Location.find(params[:id])
-
-    if @location.update(checkin_time: Time.now)
-      redirect_to completed_locations_path
+    @check_in = CheckIn.new(location: @location, user: user)
+    if @check_in.save
+      flash[:alert] = "You have added a new check in to completed trips."
+      redirect_to check_in_locations_path
     else
       flash[:alert] = "There was an error checking in. Please try again." 
     end 
   end
 
-  def completed
-    @user = current_user
-    @locations = Location.where("checkin_time IS NOT NULL")
-    @reviews = Review.all
-  end
   # DELETE /locations/1
   # DELETE /locations/1.json
   def destroy

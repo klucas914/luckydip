@@ -17,7 +17,7 @@
       <p><%= location.address %></p>
 
 
-    <%= button_to 'Check In', checkin_location_path(location), class: "btn btn-primary" %><br>
+    <%= button_to 'Check In', create_check_in_location_path(location), class: "btn btn-primary" %><br>
     <%= form_for location, url: unsave_location_path(location) do |f| %>
           <%= button_tag type: "submit", data: { confirm: 'Are you sure?' } do %>
           Remove

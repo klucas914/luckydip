@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   get '/saved_locations', to: 'users#saved_locations'
+  get '/completed_visits', to: 'users#completed_visits'
 
   resources :dips do |d|
     member do
@@ -40,7 +41,7 @@ Rails.application.routes.draw do
       patch :unsave
     end
     member do
-      post :checkin
+      post :create_check_in
     end
     collection do
       get :completed
@@ -49,6 +50,7 @@ Rails.application.routes.draw do
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :check_ins
   resources :location_types
   resources :activities
   resources :distances, only: [:new, :create]
