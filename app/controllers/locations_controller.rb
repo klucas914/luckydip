@@ -87,23 +87,22 @@ class LocationsController < ApplicationController
 
 
   def save
-    #@user = current_user
-    #@location = @user.location.find(params[:id])
     @location = Location.find(params[:id])
-    if @location.update(saved: :true)
+    if !current_user
+      redirect_to new_user_session_path
+    elsif current_user.locations << @location
       flash[:notice] = "#{@location.name} has been added to saved locations!"
-      redirect_to user_locations_path
+      redirect_to saved_locations_path
     else
       flash[:alert] = "There was an error adding this location to saved locations. Please try again."
     end
   end 
 
-  def unsave
-    @user = current_user
+  def unsave  
     @location = Location.find(params[:id])
-    if @location.update(saved: :false)
+    if current_user.locations.delete @location
       flash[:notice] = "#{@location.name} has been removed from saved locations!"
-      redirect_to store_locations_path
+      redirect_to saved_locations_path
     else
       flash[:alert] = "There was an error removing this location from saved locations. Please try again."
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317064219) do
+ActiveRecord::Schema.define(version: 20170319235704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 20170317064219) do
     t.integer "location_id", null: false
     t.index ["activity_id"], name: "index_activities_locations_on_activity_id", using: :btree
     t.index ["location_id"], name: "index_activities_locations_on_location_id", using: :btree
+  end
+
+  create_table "check_ins", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "location_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["location_id"], name: "index_check_ins_on_location_id", using: :btree
+    t.index ["user_id"], name: "index_check_ins_on_user_id", using: :btree
   end
 
   create_table "dips", force: :cascade do |t|
@@ -57,8 +66,8 @@ ActiveRecord::Schema.define(version: 20170317064219) do
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "address"
     t.integer  "activity_id"
     t.integer  "location_type_id"
@@ -67,14 +76,16 @@ ActiveRecord::Schema.define(version: 20170317064219) do
     t.float    "longitude"
     t.text     "description"
     t.integer  "review_id"
-    t.boolean  "saved",            default: false
-    t.boolean  "checkin",          default: false
-    t.datetime "checkin_time"
-    t.integer  "users_id"
     t.index ["activity_id"], name: "index_locations_on_activity_id", using: :btree
     t.index ["location_type_id"], name: "index_locations_on_location_type_id", using: :btree
     t.index ["review_id"], name: "index_locations_on_review_id", using: :btree
-    t.index ["users_id"], name: "index_locations_on_users_id", using: :btree
+  end
+
+  create_table "locations_users", force: :cascade do |t|
+    t.integer "user_id",     null: false
+    t.integer "location_id", null: false
+    t.index ["location_id"], name: "index_locations_users_on_location_id", using: :btree
+    t.index ["user_id"], name: "index_locations_users_on_user_id", using: :btree
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -126,6 +137,8 @@ ActiveRecord::Schema.define(version: 20170317064219) do
   add_foreign_key "activities", "dips"
   add_foreign_key "activities_locations", "activities"
   add_foreign_key "activities_locations", "locations"
+  add_foreign_key "check_ins", "locations"
+  add_foreign_key "check_ins", "users"
   add_foreign_key "dips", "activities"
   add_foreign_key "dips", "location_types"
   add_foreign_key "location_types_locations", "location_types"
@@ -133,7 +146,8 @@ ActiveRecord::Schema.define(version: 20170317064219) do
   add_foreign_key "locations", "activities"
   add_foreign_key "locations", "location_types"
   add_foreign_key "locations", "reviews"
-  add_foreign_key "locations", "users", column: "users_id"
+  add_foreign_key "locations_users", "locations"
+  add_foreign_key "locations_users", "users"
   add_foreign_key "reviews", "locations"
   add_foreign_key "reviews", "users"
   add_foreign_key "selections", "activities"

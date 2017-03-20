@@ -4,7 +4,9 @@
   <div class="card-block">
   <p>
   <%#= button_to 'Save Location', save_location_path, class: "btn btn-primary" %><br>
+  <% unless current_user and current_user.locations.include?(@location) %>
   <%= button_to 'Save Location', save_location_path, class: "btn btn-primary" %><br>
+  <% end %>
     <div class="row">
      
         <p>

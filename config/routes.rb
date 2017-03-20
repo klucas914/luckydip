@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  get '/saved_locations', to: 'users#saved_locations'
 
   resources :dips do |d|
     member do
@@ -36,7 +37,7 @@ Rails.application.routes.draw do
       post :save
     end
     member do
-      post :unsave
+      patch :unsave
     end
     member do
       post :checkin
