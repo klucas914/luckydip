@@ -9,13 +9,17 @@
     <div align="center">
     <div class="container">
       <% @locations.each do |location| %>
-      
+      <p>      
        <div class="card" >
         <div class="card-block">
-          <h3><%= location.name %></h3>
-           <p>You checked into this location on <%= location.created_at.strftime("%B %e, %Y at %I:%M %p") %></p>  
-          <%= link_to 'Leave a Review', class: "btn btn-primary" %><br>
-          <%= link_to 'Remove' %> 
+          <h3><%=link_to location.name, location %></h3>
+           <p>You checked into this location on <%#= @check_in.created_at.strftime("%B %e, %Y at %I:%M %p") %></p>  
+          <%= button_to 'Leave a Review', class: "btn btn-primary" %><br>
+          <%= form_for location, url: uncheck_location_path(location) do |f| %>
+            <%= button_tag type: "submit", data: { confirm: 'Are you sure?' } do %>
+            Remove
+            <% end %>
+          <% end %>
         </div>
         </div>
         <% end %>

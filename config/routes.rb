@@ -43,6 +43,9 @@ Rails.application.routes.draw do
     member do
       post :create_check_in
     end
+    member do
+      patch :uncheck
+    end
     collection do
       get :completed
     end

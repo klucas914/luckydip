@@ -4,7 +4,7 @@ require 'httparty'
 class LocationsController < ApplicationController
   #before_action :set_location, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:show ]
-  before_filter :verify_is_admin, except: [:show, :save, :unsave, :create_check_in, :store, :checkin, :completed]
+  before_filter :verify_is_admin, except: [:show, :save, :unsave, :create_check_in, :uncheck]
   # GET /locations.json
   def get_location
     @location = Location.find(params[:id])
@@ -114,11 +114,22 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
     @check_in = CheckIn.new(location: @location, user: user)
     if @check_in.save
+      @check_in.created_at = Time.now
       flash[:alert] = "You have added a new check in to completed trips."
-      redirect_to check_in_locations_path
+      redirect_to completed_visits_path
     else
       flash[:alert] = "There was an error checking in. Please try again." 
     end 
+  end
+
+  def uncheck
+    @location = Location.find(params[:id])
+    if current_user.locations.delete @location
+      flash[:notice] = "#{@location.name} has been removed from completed visits!"
+      redirect_to completed_visits_path
+    else
+      flash[:alert] = "There was an error removing this location from completed visits. Please try again."
+    end
   end
 
   # DELETE /locations/1
