@@ -31,9 +31,6 @@ Rails.application.routes.draw do
   	collection do
   		get :activities
   	end
-    collection do
-      get :store, as: :user
-    end
     member do
       post :save
     end
@@ -42,12 +39,6 @@ Rails.application.routes.draw do
     end
     member do
       post :create_check_in
-    end
-    member do
-      patch :uncheck
-    end
-    collection do
-      get :completed
     end
     resources :reviews do
       member do
@@ -58,12 +49,7 @@ Rails.application.routes.draw do
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :check_ins do
-    member do
-      patch :uncheck, as: :user
-    end
-  end
-
+  resources :check_ins 
   resources :location_types
   resources :activities
   resources :distances, only: [:new, :create]
