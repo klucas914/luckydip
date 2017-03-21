@@ -58,7 +58,12 @@ Rails.application.routes.draw do
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
+  resources :check_ins do
+    member do
+      patch :uncheck, as: :user
+    end
+  end
+
   resources :location_types
   resources :activities
   resources :distances, only: [:new, :create]

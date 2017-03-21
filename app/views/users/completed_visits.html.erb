@@ -12,10 +12,11 @@
       <p>      
        <div class="card" >
         <div class="card-block">
-          <h3><%= check_in.location.name %></h3>
+          <h3><%=link_to check_in.location.name, check_in.location %></h3>
            <p>You checked into this location on <%= check_in.created_at.strftime("%B %e, %Y at %I:%M %p") %></p>  
-          <%#= button_to 'Leave a Review', new_location_review_path(location), class: "btn btn-primary" %><br>
-          <%#= form_for location, url: uncheck_location_path(location) do |f| %>
+          <%= button_to 'Leave a Review', class: "btn btn-primary" %><br>
+          <%= link_to 'Remove', check_in, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%#= form_for check_in, url: uncheck_check_in_path(check_in) do |f| %>
             <%#= button_tag type: "submit", data: { confirm: 'Are you sure?' } do %>
             Remove
             <% #end %>

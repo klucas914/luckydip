@@ -114,11 +114,8 @@ class LocationsController < ApplicationController
     location = Location.find(params[:id])
     @check_in = CheckIn.new(location: location, user: user)
     if @check_in.save
-      #get timestamp for check in
-      @check_in.created_at = Time.now
-      #remove location from saved locations
-      
       flash[:alert] = "You have added a new check in to completed trips."
+      #remove location from saved locations
       redirect_to completed_visits_path
     else
       flash[:alert] = "There was an error checking in. Please try again." 
@@ -126,9 +123,9 @@ class LocationsController < ApplicationController
   end
 
   def uncheck
-    @location = Location.find(params[:id])
-    if current_user.locations.delete @location
-      flash[:notice] = "#{@location.name} has been removed from completed visits!"
+    @check_ins = current_user.check_ins
+    if current_user.check_in.delete @check_in
+      flash[:notice] = "#{@check_in.location.name} has been removed from completed visits!"
       redirect_to completed_visits_path
     else
       flash[:alert] = "There was an error removing this location from completed visits. Please try again."
