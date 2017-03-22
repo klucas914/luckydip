@@ -29,8 +29,9 @@ class LocationsController < ApplicationController
   def show
     @user = current_user
     @location = Location.find(params[:id])
-    @reviews = @location.reviews
+    @reviews = @location.reviews.reverse
     coordinates = Geocoder.coordinates("4 Bega Pl. Parrearra, QLD 4575")
+    #@user = @review.user
     #place_id = Geocoder.coordinates.search("AIzaSyCySx-U3_icPnHJ-dFYZ9UAYlCOpc5zXGo", lookup: :google_places_details) 
     
     

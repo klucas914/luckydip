@@ -5,12 +5,13 @@
     <p>
       <div class="card">
       <div class="card-block">
-        <h2 class="card-title">Review for <%#= @review.location.name %></h2>
+        <h2 class="card-title">Review for <%= @location.name %> by <%#= @user.name %></h2>
          <p class="card-text">
          <h4><%= @review.comments %> </h4></p>
 
+<%= link_to 'View Location', location_path(@location) %>  |
 <%= link_to 'Back to Completed Visits', completed_visits_path %>  |
-<%= link_to 'Edit', edit_review_path(@review) %> 
+<%= link_to 'Edit Review', edit_review_path(@review) %> 
 
 
   

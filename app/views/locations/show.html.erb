@@ -80,7 +80,7 @@
       <div class="card-block">
             <div class="panel panel-default">
               <% @reviews.each do |review| %>
-                <div class="panel-heading"><strong><%= review.created_at.strftime("%B %e, %Y at %I:%M %p") %></strong></div><br>
+                <div class="panel-heading"><strong>Review by <%#= @user.name %> at <%= review.created_at.strftime("%B %e, %Y at %I:%M %p") %></strong></div><br>
                 <div class="panel-body"><%= review.comments %></div><br>
             <% end %>
             </div>    
