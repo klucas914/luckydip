@@ -19,10 +19,15 @@ class DipsController < ApplicationController
     @dip           = Dip.find(params[:id])
     @activity      = Activity.find(@dip.activity_id)
     @location_type = LocationType.find(@dip.location_type_id)
+    @user          = current_user
+    address        = @user.address
     
+     
     if ENV.fetch("RAILS_ENV") == 'development' or ENV.fetch("RAILS_ENV") == 'test'
-      coordinates = Geocoder.coordinates("4 Bega Pl. Parrearra, QLD 4575")
-    else
+      coordinates = Geocoder.coordinates(address)
+    elsif 
+      coordinates = Geocoder.coordinates(address)
+    else  
       coordinates = request.location.coordinates
     end
 
