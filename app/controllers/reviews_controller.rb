@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   
   def index
     @reviews = Review.all
-    @locations = Location.all
+    #@location = Location.find(params[:location_id]) 
   end
 
   def show
@@ -18,12 +18,15 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
+    @location = Location.find(params[:location_id])
   end
 
   def create
   	@review = Review.new(review_params)
+    @location = @review.location
+    #@location = Location.find(params[:location_id])
+    #@review = Review.new(location: @location)
     
-   
     respond_to do |format|
       if @review.save
         format.html { redirect_to @review, notice: 'Review was successfully created.' }

@@ -31,7 +31,7 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
     @reviews = @location.reviews
     coordinates = Geocoder.coordinates("4 Bega Pl. Parrearra, QLD 4575")
-   
+    #place_id = Geocoder.coordinates.search("AIzaSyCySx-U3_icPnHJ-dFYZ9UAYlCOpc5zXGo", lookup: :google_places_details) 
     
     
   end

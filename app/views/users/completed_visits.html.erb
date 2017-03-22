@@ -14,7 +14,7 @@
         <div class="card-block">
           <h3><%=link_to check_in.location.name, check_in.location %></h3>
            <p>You checked into this location on <%= check_in.created_at.strftime("%B %e, %Y at %I:%M %p") %></p>  
-          <%= button_to 'Leave a Review', class: "btn btn-primary" %><br>
+          <%= button_to 'Leave a Review', new_location_review_path(check_in.location), class: "btn btn-primary" %><br>
           <%= button_to 'Remove', check_in, method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
         </div>
