@@ -4,7 +4,7 @@ require 'httparty'
 class LocationsController < ApplicationController
   #before_action :set_location, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:show ]
-  before_filter :verify_is_admin, except: [:show, :save, :unsave, :store, :checkin, :completed]
+  before_filter :verify_is_admin, except: [:show, :save, :unsave, :create_check_in, :uncheck]
   # GET /locations.json
   def get_location
     @location = Location.find(params[:id])
@@ -20,7 +20,6 @@ class LocationsController < ApplicationController
     @locations = Location.all
     @activities = Activity.all
     @location_types = LocationType.all
-    
     client = SODA::Client.new({:domain => "data.sunshinecoast.qld.gov.au", :app_token => "sEY5VrKymwxyflwlu2SAlK0nr"})
     @results = client.get("adry-tzke", :$limit => 5000)
   end
@@ -28,10 +27,12 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.json
   def show
+    @user = current_user
     @location = Location.find(params[:id])
-    @reviews = @location.reviews
+    @reviews = @location.reviews.reverse
     coordinates = Geocoder.coordinates("4 Bega Pl. Parrearra, QLD 4575")
-   
+    #@user = @review.user
+    #place_id = Geocoder.coordinates.search("AIzaSyCySx-U3_icPnHJ-dFYZ9UAYlCOpc5zXGo", lookup: :google_places_details) 
     
     
   end
@@ -88,43 +89,42 @@ class LocationsController < ApplicationController
 
   def save
     @location = Location.find(params[:id])
-    if @location.update(saved: :true)
+    if !current_user
+      redirect_to new_user_session_path
+    elsif current_user.locations << @location
       flash[:notice] = "#{@location.name} has been added to saved locations!"
-      redirect_to store_locations_path
+      redirect_to saved_locations_path
     else
       flash[:alert] = "There was an error adding this location to saved locations. Please try again."
     end
   end 
 
-  def unsave
-    @location = Location.find_by(id: params[:id])
-    #@location = Location.find(params[:id])
-    if @location.update(saved: :false)
+  def unsave  
+    @location = Location.find(params[:id])
+    if current_user.locations.delete @location
       flash[:notice] = "#{@location.name} has been removed from saved locations!"
-      redirect_to store_locations_path
+      redirect_to saved_locations_path
     else
       flash[:alert] = "There was an error removing this location from saved locations. Please try again."
     end
   end
 
-  def store
-    @locations = Location.where("saved IS TRUE and checkin_time IS NULL").reverse.each
-  end
 
-  def checkin
-    @location = Location.find(params[:id])
-
-    if @location.update(checkin_time: Time.now)
-      redirect_to completed_locations_path
+  def create_check_in
+    user = current_user
+    location = Location.find(params[:id])
+    @check_in = CheckIn.new(location: location, user: user)
+    if @check_in.save
+      flash[:alert] = "You have added #{location.name} to completed trips."
+      current_user.locations.delete location
+      #remove location from saved locations
+      redirect_to completed_visits_path
     else
       flash[:alert] = "There was an error checking in. Please try again." 
     end 
   end
 
-  def completed
-    @locations = Location.where("checkin_time IS NOT NULL")#.reverse.each
-    @reviews = Review.all
-  end
+
   # DELETE /locations/1
   # DELETE /locations/1.json
   def destroy

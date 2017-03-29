@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
+  get '/saved_locations', to: 'users#saved_locations'
+  get '/completed_visits', to: 'users#completed_visits'
+
   resources :dips do |d|
     member do
       post :create_selection
@@ -28,24 +31,25 @@ Rails.application.routes.draw do
   	collection do
   		get :activities
   	end
-    collection do
-      get :store
-    end
     member do
       post :save
     end
     member do
-      post :unsave
+      patch :unsave
     end
     member do
-      post :checkin
+      post :create_check_in
     end
-    collection do
-      get :completed
+    resources :reviews do
+      member do
+        post :new
+      end
     end
-    resources :reviews
+
   end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :check_ins 
   resources :location_types
   resources :activities
   resources :distances, only: [:new, :create]

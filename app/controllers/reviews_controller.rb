@@ -2,28 +2,34 @@ class ReviewsController < ApplicationController
   
   def index
     @reviews = Review.all
-    @locations = Location.all
+    #@location = Location.find(params[:location_id]) 
   end
 
   def show
   	@review = Review.find(params[:id])
   	@location = @review.location
+    
   end
 
   def new
     @review = Review.new
     @location = Location.find(params[:location_id])
-   
+    
   end
 
   def edit
     @review = Review.find(params[:id])
+    @location = Location.find(params[:location_id])
+    
   end
 
   def create
   	@review = Review.new(review_params)
+    @location = @review.location
     
-   
+    #@location = Location.find(params[:location_id])
+    #@review = Review.new(location: @location)
+    
     respond_to do |format|
       if @review.save
         format.html { redirect_to @review, notice: 'Review was successfully created.' }
@@ -63,7 +69,7 @@ class ReviewsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:comments, :location_id, location_attributes: [:name, :address])
+      params.require(:review).permit(:comments, :user, :location_id, location_attributes: [:name, :address])
     end
 end
 

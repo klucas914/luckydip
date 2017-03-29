@@ -8,7 +8,7 @@
   <div class="row">
     <div align="center">
       <div class="container">
-  <% @locations.each do |location| %>
+       <% @locations.each do |location| %>
   <p>
   <div class="card">
     <div class="card-block">
@@ -17,8 +17,12 @@
       <p><%= location.address %></p>
 
 
-    <%= button_to 'Check In', checkin_location_path(location), class: "btn btn-primary" %><br>
-    <%= button_to 'Remove', unsave_location_path(location), method: :unsave, data: { confirm: 'Are you sure?' } %>
+    <%= button_to 'Check In', create_check_in_location_path(location), class: "btn btn-primary" %><br>
+    <%= form_for location, url: unsave_location_path(location) do |f| %>
+          <%= button_tag type: "submit", data: { confirm: 'Are you sure?' } do %>
+          Remove
+          <% end %>
+    <% end %>
     </div>
   </div>
   <% end %>  

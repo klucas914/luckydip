@@ -3,7 +3,10 @@
 <div class="card">
   <div class="card-block">
   <p>
+  <%#= button_to 'Save Location', save_location_path, class: "btn btn-primary" %><br>
+  <% unless current_user and current_user.locations.include?(@location) %>
   <%= button_to 'Save Location', save_location_path, class: "btn btn-primary" %><br>
+  <% end %>
     <div class="row">
      
         <p>
@@ -55,6 +58,11 @@
           <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@location.latitude},#{@location.longitude}&markers=#{@location.latitude},#{@location.longitude}&zoom=13&size=640x400&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
             class: 'img-fluid img-rounded', alt: "#{@location.name} on the map"%>
          <p>
+
+         <!--<iframe width="600" height="400" frameborder="0" style="border:0"
+         src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCySx-U3_icPnHJ-dFYZ9UAYlCOpc5zXGo&q=place_id:#{@location.place_id}"
+         allowfullscreen>
+         </iframe>-->
          <h5><%= link_to 'Get Directions' %></h5><br>
       </div>
     </div>
@@ -72,7 +80,7 @@
       <div class="card-block">
             <div class="panel panel-default">
               <% @reviews.each do |review| %>
-                <div class="panel-heading"><strong><%= review.created_at.strftime("%B %e, %Y at %I:%M %p") %></strong></div><br>
+                <div class="panel-heading"><strong>Review by <%#= @user.name %> at <%= review.created_at.strftime("%B %e, %Y at %I:%M %p") %></strong></div><br>
                 <div class="panel-body"><%= review.comments %></div><br>
             <% end %>
             </div>    

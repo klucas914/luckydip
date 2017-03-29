@@ -14,31 +14,27 @@
   </head>
 
 <body>
+
 <nav class="navbar navbar-toggleable-md navbar-light">
-  
+  <% if user_signed_in? %>
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
+<% end %>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="nav navbar-nav">
         <li class="active"><a class="nav-link" href="<%= new_dip_path %>">New Dip</a></li>
-        <% if user_signed_in? %>
-        <li class="active"><a class="nav-link" href="<%= store_locations_path %>">Saved Locations</a></li>
-        <li class="active"><a class="nav-link" " href="<%= completed_locations_path %>">Completed Visits</a></li>
-        <% end %>
+        <li class="active"><a class="nav-link" href="<%= saved_locations_path %>">Saved Locations</a></li>
+        <li class="active"><a class="nav-link" " href="<%= completed_visits_path %>">Completed Visits</a></li>
         <% if current_user.try(:admin?) %>
         <li class="active"><a class="nav-link" href="<%= locations_path %> ">Manage Locations<span class="sr-only"></span></a></li>
         <li class="active"><a class="nav-link" href="<%= activities_path %> ">Manage Activities<span class="sr-only">(current)</span></a></li>
         <% end %>
     <ul class="nav navbar-nav pull-right">
-        <% if user_signed_in? %>
+          <% if user_signed_in? %>
           <li class="active"><a class="nav-link" href="<%= edit_user_registration_path %>"><%= current_user.name %>'s Profile</a></li>
           <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li class="active"><a class="nav-link" href="<%= new_user_session_path %>">Log In</a></li>
-          <li class="active"><a class="nav-link" href="<%= new_user_registration_path %>">Sign Up</a></li>
-        <% end %>
+          <% end %>
     </ul>
    </ul>
   </div>
@@ -68,8 +64,10 @@
 
       </ul>
     </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.container-fluid -->
 </nav>
+
 
 <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
