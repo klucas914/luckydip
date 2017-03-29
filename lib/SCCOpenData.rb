@@ -1,15 +1,15 @@
-require 'httparty' 
+require 'httparty'
 
   #def get_location_features location latitude longitude distance
    # @location_features = json.parse(data)
   #end
 class SCCOpenData
   include HTTParty
-  
+
   base_uri = 'www.gisservices.scc.qld.gov.au'
-  
+
   default_timeout 1
- 
+
   attr_accessor :fields, :features
 
   def base_path
@@ -32,10 +32,8 @@ class SCCOpenData
   	url = "#{base_path}#{OBJECTID}"
   	self.class.get(url, options)['fields']['features']
   end
-
-
-
 end
+
 #Object_Id:
 #'/42'
 
@@ -65,4 +63,4 @@ end
 
 #Community Gardens (15)
 #https://gisservices.scc.qld.gov.au/arcgis/rest/services/Society/Society_SCRC/MapServer/15/query?where=&text=&objectIds=&time=&geometry=XMin%3A+%2B153.073286%0D%0AYMin%3A+-26.650181%0D%0AXMax%3A+%2B153.087902%0D%0AYMax%3A+-26.641052%0D%0A&geometryType=esriGeometryEnvelope&inSR=102100+%283857%29++&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&f=pjson
-  
+
