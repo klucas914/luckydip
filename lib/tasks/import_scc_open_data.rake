@@ -22,7 +22,23 @@ task import_scc_open_data: :environment do |t, args|
         }
       end,
     },
-    # { name: 'Aquatic Center',   id:  1 },
+    {
+      name: 'Aquatic Centre',
+      id:   1,
+      fields: [
+        'OBJECTID',
+        'Name',
+      ],
+      parser: lambda do |feature|
+        {
+          id:          feature['attributes']['OBJECTID'],
+          name:        feature['attributes']['Name'],
+          address:     nil,
+          description: nil,
+          location:    [ feature['geometry']['x'], feature['geometry']['y'] ],
+        }
+      end,
+    },
     # { name: 'Beach',            id:  6 },
     # { name: 'Fitness',          id: 22 },
     # { name: 'Library',          id: 39 },
