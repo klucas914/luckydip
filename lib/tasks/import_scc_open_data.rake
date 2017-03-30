@@ -39,11 +39,117 @@ task import_scc_open_data: :environment do |t, args|
         }
       end,
     },
-    # { name: 'Beach',            id:  6 },
+    {
+      name: 'Aquatic Centre',
+      id:   2,
+      fields: [
+        'OBJECTID',
+        'Name',
+      ],
+      parser: lambda do |feature|
+        {
+          id:          feature['attributes']['OBJECTID'],
+          name:        feature['attributes']['Name'],
+          address:     nil,
+          description: nil,
+          location:    [ feature['geometry']['x'], feature['geometry']['y'] ],
+        }
+      end,
+    },
+    {
+      name: 'Aquatic Centre',
+      id:   3,
+      fields: [
+        'OBJECTID',
+        'Name',
+      ],
+      parser: lambda do |feature|
+        {
+          id:          feature['attributes']['OBJECTID'],
+          name:        feature['attributes']['Name'],
+          address:     nil,
+          description: nil,
+          location:    [ feature['geometry']['x'], feature['geometry']['y'] ],
+        }
+      end,
+    },
+    {
+      name: 'Library',
+      id:   39,
+      fields: [
+        'OBJECTID',
+        'Name',
+        'Location_Description',
+        'Website'
+      ],
+      parser: lambda do |feature|
+        {
+          id:          feature['attributes']['OBJECTID'],
+          name:        feature['attributes']['Name'],
+          address:     feature['attributes']['Location_Description'],
+          description: feature['attributes']['Website'],
+          location:    [ feature['geometry']['x'], feature['geometry']['y'] ],
+        }
+      end,
+    },
+    {
+      name: 'Library',
+      id:   41,
+      fields: [
+        'OBJECTID',
+        'Name'
+      ],
+      parser: lambda do |feature|
+        {
+          id:          feature['attributes']['OBJECTID'],
+          name:        feature['attributes']['Name'],
+          address:     nil,
+          description: nil,
+          location:    [ feature['geometry']['x'], feature['geometry']['y'] ],
+        }
+      end,
+    },
+    {
+      name: 'Public Art',
+      id:   47,
+      fields: [
+        'OBJECTID',
+        'Name',
+        'Location',
+        'Photo'
+      ],
+      parser: lambda do |feature|
+        {
+          id:          feature['attributes']['OBJECTID'],
+          name:        feature['attributes']['Name'],
+          address:     feature['attributes']['Location'],
+          description: feature['attributes']['Photo'],
+          location:    [ feature['geometry']['x'], feature['geometry']['y'] ],
+        }
+      end,
+    },
+    #these are weekly markets only
+    {
+      name: 'Community Market',
+      id:   16,
+      fields: [
+        'OBJECTID',
+        'Name',
+        'MarketAddress',
+        'Hours'
+      ],
+      parser: lambda do |feature|
+        {
+          id:          feature['attributes']['OBJECTID'],
+          name:        feature['attributes']['Name'],
+          address:     feature['attributes']['MarketAddress'],
+          description: feature['attributes']['Hours'],
+          location:    [ feature['geometry']['x'], feature['geometry']['y'] ],
+        }
+      end,
+    },
+    # Only 2 of the community markets are downloading
     # { name: 'Fitness',          id: 22 },
-    # { name: 'Library',          id: 39 },
-    # { name: 'Public Art',       id: 47 },
-    # { name: 'Dog Park',         id: 59 },
     {
       name: 'Community Garden',
       id:   15,
