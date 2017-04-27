@@ -20,8 +20,8 @@ class LocationsController < ApplicationController
     @locations = Location.all
     @activities = Activity.all
     @location_types = LocationType.all
-    
-
+    client = SODA::Client.new({:domain => "data.sunshinecoast.qld.gov.au", :app_token => "sEY5VrKymwxyflwlu2SAlK0nr"})
+    @results = client.get("adry-tzke", :$limit => 5000)
   end
 
   # GET /locations/1
