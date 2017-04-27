@@ -5,24 +5,6 @@ desc "Import SCCOpenData from www.gisservices.scc.qld.gov.au"
 task import_scc_open_data: :environment do |t, args|
   location_types = [
     {
-      name: 'Playground',
-      id:   42,
-      fields: [
-        'OBJECTID_1',
-        'Park',
-        'MXLOCATION',
-      ],
-      parser: lambda do |feature|
-        {
-          id:          feature['attributes']['OBJECTID_1'],
-          name:        feature['attributes']['Park'],
-          address:     feature['attributes']['MXLOCATION'],
-          description: nil,
-          location:    [ feature['geometry']['x'], feature['geometry']['y'] ],
-        }
-      end,
-    },
-    {
       name: 'Aquatic Centre',
       id:   1,
       fields: [
@@ -109,25 +91,7 @@ task import_scc_open_data: :environment do |t, args|
         }
       end,
     },
-    {
-      name: 'Public Art',
-      id:   47,
-      fields: [
-        'OBJECTID',
-        'Name',
-        'Location',
-        'Photo'
-      ],
-      parser: lambda do |feature|
-        {
-          id:          feature['attributes']['OBJECTID'],
-          name:        feature['attributes']['Name'],
-          address:     feature['attributes']['Location'],
-          description: feature['attributes']['Photo'],
-          location:    [ feature['geometry']['x'], feature['geometry']['y'] ],
-        }
-      end,
-    },
+    
     #these are weekly markets only
     {
       name: 'Community Market',
@@ -191,6 +155,7 @@ task import_scc_open_data: :environment do |t, args|
 
       response['features'].each do |feature|
         parsed_attributes = location_type[:parser].call(feature)
+        next if parsed_attributes[:name] == "result.name"
         existing_location = Location.where(scc_open_data_id: parsed_attributes[:id]).first
         unless existing_location
           puts "Importing location ID #{parsed_attributes[:id]}"

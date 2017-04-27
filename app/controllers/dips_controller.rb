@@ -56,7 +56,7 @@ class DipsController < ApplicationController
     respond_to do |format|
       if @dip.save
         
-        format.html { redirect_to @dip, notice: 'Dip was successfully created.' }
+        format.html { redirect_to @dip }
         format.json { render :show, status: :created, location: @dip }
       else
         format.html { render :new }
