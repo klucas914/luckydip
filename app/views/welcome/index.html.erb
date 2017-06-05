@@ -1,20 +1,80 @@
 <div class="container-fluid">
 <p>
 
-<div class="row">
-   <div align="center"><%= link_to image_tag("luckydiplogo2.png") %>
-   </div>
-</div>
+    <!--<div class="row">
+      <div align="center"><%= link_to image_tag("luckydiplogo2.png") %></div>
+    </div>
+  </div>-->
 
+<div class="jumbotron">
+  <div class="page-header">
+    <div align="center"><%=image_tag("luckydiplogo2.png") %></div>
+  </div>
+  <div class="container">
+    <div align="center"><h1 style="color:white">Where will your luck take you?</h1></div>
+    <p>
+    <div class="row">
+      <% if user_signed_in? %>
+        <div align="center"><%= link_to 'Go!', new_dip_path, class: "btn btn-primary btn-lg" %></div>
+      <% else %>
+        <div align="center"><%= link_to 'Get Started', new_user_session_path, class: "btn btn-primary btn-lg" %>
+        </div>
+        <!--<div align="center"><h3 style="color:white"><%= link_to 'Sign In', new_user_session_path %> or
+      <%= link_to 'Sign Up', new_user_registration_path %> to get started!</h3></div></br>-->
+      <% end %>
+    </div>
+   </p>
+  </div>
+</div>
+<br>
+
+<!--<div class="row">
+  <h1 style="text-align:center; font-family:verdana;">Lucky Dip App</h1>
+</div>-->
+<br>
 <div class="row">
-  <div align="center">
-  <h1>Where will your luck take you?</h1>
+  
+  <div class="col-sm-6 col-md-4">
+    <div class="card">
+  
+  <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+  <div class="card-block">
+    <h4 class="card-title">Explorers Wanted</h4>
+    <p class="card-text">Itching to go somewhere new? Lucky Dip app matches your mood to locations and events around Sunshine Coast that you'll want to visit.  </p>
+  </div>
   </div>
 </div>
 
-
+  <div class="col-sm-6 col-md-4">
+    <div class="card">
+  <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+  <div class="card-block">
+    <h4 class="card-title">Locations Found</h4>
+    <p class="card-text">Use the app to find customized locations and events that fit your mood. No time consuming research. No wading through websites. With 3 clicks of a button you'll have the Sunshine Coast at your fingertips.</p>
+  </div>
 </div>
-<p>
+</div>
+
+<div class="col-sm-6 col-md-4">
+ <div class="card">
+  <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+  <div class="card-block">
+    <h4 class="card-title">It's Free</h4>
+    <p class="card-text">Search and save as many locations and events as you want. Keep track of everywhere you've been and leave reviews of your favourites. </p>
+  </div>
+  </div>
+</div>
+</div>
+
+
+  <!--<div class="row">
+    <div align="center">
+      <h1>Where will your luck take you?</h1>
+    </div>
+  </div>
+</div>-->
+
+<!--<p>
 <div class="row">
   <% if user_signed_in? %>
     <div align="center"><%= link_to 'Go!', new_dip_path, class: "btn btn-primary btn-lg" %>
@@ -23,7 +83,7 @@
     <%= link_to 'Sign Up', new_user_registration_path %> to get started!</div></br>
   <% end %>
 </div>
-<br>
+<br>-->
 
 </div>
 
