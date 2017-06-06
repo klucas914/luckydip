@@ -11,8 +11,11 @@
  * It is generally better to create a new file per style scope.
  *
  */
+ //@import "bootstrap-sprockets";
  @import "bootstrap";
  @import "chosen";
+ //@import "bootstrap-chosen";
+
 
 body {
 	background-color: #52BE80;
@@ -34,6 +37,11 @@ body {
       background-position: center;
       background-size: cover;
   }
+
+.carousel {
+  width: 100%;
+}
+
 
 
 
