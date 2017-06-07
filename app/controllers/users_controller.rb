@@ -5,6 +5,6 @@ class UsersController < ApplicationController
   end
 
   def completed_visits
-    @check_ins = current_user.check_ins
+    @check_ins = current_user.check_ins.reverse
   end
 end
