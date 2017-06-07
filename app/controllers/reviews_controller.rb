@@ -19,8 +19,8 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
-    @location = Location.find(params[:location_id])
-    
+    #@location = Location.find(params[:location_id])
+    @location = @review.location
   end
 
   def create

@@ -7,7 +7,7 @@
       <div class="card-block">
         <h2 class="card-title">Review for <%= @location.name %> by <%= @review.user.try(:name) %></h2>
          <p class="card-text">
-         <h4><%= @review.comments %> </h4></p>
+         <p><%= @review.comments %></p>
 
 <%= link_to 'View Location', location_path(@location) %>  |
 <%= link_to 'Back to Completed Visits', completed_visits_path %>  |
