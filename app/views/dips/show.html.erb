@@ -10,7 +10,6 @@
 
 
    <div class="container">
-      
       <% @locations.each do |location| %>
         <% unless current_user and current_user.locations.include?(location) %>
         
@@ -30,7 +29,6 @@
             
             </div>
           </div>
-        
       <% end %>
     <% end %>      
   </div>

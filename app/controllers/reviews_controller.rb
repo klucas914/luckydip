@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
 
   def show
   	@review = Review.find(params[:id])
-  	@location = @review.location
+    @location = @review.location_id
     
   end
 

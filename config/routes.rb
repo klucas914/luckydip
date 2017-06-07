@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   get '/saved_locations', to: 'users#saved_locations'
   get '/completed_visits', to: 'users#completed_visits'
+  get '/about', to: 'welcome#about'
+  get 'contact', to: 'welcome#contact'
+  get '/owners', to: 'welcome#owners'
 
   resources :dips do |d|
     member do
