@@ -6,9 +6,9 @@
   
   
    <h2>Give this a try...</h2>  
-
-
-
+<br>
+<%= button_to "Shuffle", dip_path(@dip), method:'get', class: "btn btn-primary" %>
+<br>
    <div class="container">
       <% @locations.each do |location| %>
         <% unless current_user and current_user.locations.include?(location) %>
