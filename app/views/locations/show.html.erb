@@ -79,6 +79,7 @@
     <div id="Reviews" class="collapse" role="tabpanel" aria-labelledby="headingThree">
       <div class="card-block">
             <div class="panel panel-default">
+              <%= button_to 'Leave a Review', new_location_review_path(@location), class: "btn btn-primary" %><br>
               <% @reviews.each do |review| %>
                 <div class="panel-heading"><strong>Review by <%= review.user.try(:name) %> at <%= review.created_at.strftime("%B %e, %Y at %I:%M %p") %></strong></div><br>
                 <div class="panel-body"><%= review.comments %></div><br>
