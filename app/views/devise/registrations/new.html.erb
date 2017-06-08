@@ -7,13 +7,14 @@
   <%= devise_error_messages! %>
 
   <div class="form-group">
-    <%= f.label :Username %> (Your name will appear in reviews you complete)
+    <%= f.label :Username %> 
+    <p><i>Your name will appear in reviews you complete</i></p>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
 
   <div class="form-group">
     <%= f.label :address %> 
-    <p><i>Distances are calculated from this address. Be sure to include your suburb. If you leave the address blank, the app will calculate distances using your IP address, which is unreliable.</i></p>
+    <p><i>Distances are calculated from this address. Be sure to include your suburb. If you leave the address blank, the app will calculate distances using your IP address, which is unreliable. Your address will remain private and will not be used for any other purpose.</i></p>
     <%= f.text_field :address, class: 'form-control' %>
   </div>
 
