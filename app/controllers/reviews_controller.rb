@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-  before_filter :verify_is_admin
+  
+  
   def index
     @reviews = Review.all
     #@location = Location.find(params[:location_id]) 
