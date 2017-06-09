@@ -14,15 +14,31 @@
     <table class="table table-striped">
   
   <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Hidden?</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
     <% @activities.each do |activity| %>
+
       <tr>
         <td><%= activity.name %></td>
+        <td><%= activity.hidden %></td>
         <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
         <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if activity.hidden? %>
+        <td><%= button_to 'Unhide from users', unhide_activity_path(activity), method: :unhide, class: "btn btn-success" %>
+        <% else %>
+        <td><%= button_to 'Hide from users', hide_activity_path(activity), method: :hide, class: "btn btn-danger" %></td>
+        <% end %>
+
       </tr>
     <% end %>
   </tbody>
 </table>
+
 
 <br>
 </p>

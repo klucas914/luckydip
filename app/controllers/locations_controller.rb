@@ -112,7 +112,7 @@ class LocationsController < ApplicationController
     location = Location.find(params[:id])
     @check_in = CheckIn.new(location: location, user: user)
     if @check_in.save
-      flash[:alert] = "You have added #{location.name} to completed trips."
+      flash[:notice] = "You have added #{location.name} to completed trips."
       current_user.locations.delete location
       #remove location from saved locations
       redirect_to completed_visits_path

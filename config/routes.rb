@@ -48,13 +48,20 @@ Rails.application.routes.draw do
         post :new
       end
     end
-
   end
-
+  
+  resources :activities do
+    member do
+      post :hide
+    end
+    member do
+      post :unhide
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :check_ins 
   resources :location_types
-  resources :activities
+  
   resources :distances, only: [:new, :create]
   resources :reviews
   root 'welcome#index'

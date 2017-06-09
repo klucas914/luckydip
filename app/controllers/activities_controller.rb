@@ -1,4 +1,6 @@
 class ActivitiesController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  protect_from_forgery prepend: true, with: :exception
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
   before_filter :verify_is_admin
 
@@ -12,6 +14,18 @@ class ActivitiesController < ApplicationController
   # GET /activities/1.json
   def show
     @activity = Activity.find(params[:id])
+  end
+
+  def hide
+    @activity = Activity.find(params[:id])
+    @activity.update(hidden: true)
+    redirect_to activities_path
+  end
+
+  def unhide
+    @activity = Activity.find(params[:id])
+    @activity.update(hidden: false)
+    redirect_to activities_path
   end
 
   # GET /activities/new
@@ -76,6 +90,6 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit(:name)
+      params.require(:activity).permit(:name, :hidden)
     end
 end

@@ -1,5 +1,4 @@
 class DipsController < ApplicationController
-
   # GET /dips
   # GET /dips.json
   def index
@@ -37,7 +36,7 @@ class DipsController < ApplicationController
   # GET /dips/new
   def new
     @dip = Dip.new
-    @activities = Activity.all
+    @activities = Activity.where(hidden: false)
     @location_types = LocationType.all
 
   end
