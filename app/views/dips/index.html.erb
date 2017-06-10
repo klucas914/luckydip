@@ -19,8 +19,10 @@
         <td><%= dip.location_type.name %></td>
         <td><%= dip.distance %> km</td>
         <td><%= link_to 'Show', dip %></td>
+        <% if current_user.try(:admin?) %>
         <td><%= link_to 'Edit', edit_dip_path(dip) %></td>
         <td><%= link_to 'Destroy', dip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

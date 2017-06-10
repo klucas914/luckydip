@@ -9,8 +9,10 @@
     <% @location_types.each do |location_type| %>
       <tr>
         <td><%= location_type.name %>
+        <% if current_user.try(:admin?) %>
         <td><%= link_to 'Edit', edit_location_type_path(location_type) %></td>
         <td><%= link_to 'Destroy', location_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
