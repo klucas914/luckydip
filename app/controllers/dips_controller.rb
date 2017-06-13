@@ -25,7 +25,7 @@ class DipsController < ApplicationController
      
     if ENV.fetch("RAILS_ENV") == 'development' or ENV.fetch("RAILS_ENV") == 'test'
       coordinates = Geocoder.coordinates(address)
-    elsif 
+    elsif address
       coordinates = Geocoder.coordinates(address)
     else  
       coordinates = request.location.coordinates
