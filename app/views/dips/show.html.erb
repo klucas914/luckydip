@@ -1,39 +1,30 @@
-<p>
 <div class="container">
   <div align="center">
     <%= link_to image_tag("luckydiplogo2.png"), new_dip_path %>
-    <p>
-  
-  
-   <h2>Give this a try...</h2>  
-<br>
-<%= button_to "Shuffle", dip_path(@dip), method:'get', class: "btn btn-primary" %>
-<br>
-   <div class="container">
-      <% @locations.each do |location| %>
-        <% unless current_user and current_user.locations.include?(location) %>
-        
-          <div class="card">
-          
-            <div class="card-block">
-            
-              <h3><%= link_to location.name, location_path(location) %></h3>
-   
-              <p><%= location.address %></p>
-
-              <p><strong>Distance Away: <%= location.distance.round %> km</strong></p>
-            
-              <div class="container">
-              <%= button_to 'Save Location', save_location_path(location), class: "btn btn-primary" %>
+    <p></p>
+    <h2>Give this a try...</h2>  
+    <br>
+    <%= button_to "Shuffle", dip_path(@dip), method:'get', class: "btn btn-primary" %>
+    <br>
+    <div class="container">
+      <% if @locations.length > 0 %>  
+        <% @locations.each do |location| %>
+          <% unless current_user and current_user.locations.include?(location) %>
+            <div class="card">
+              <div class="card-block">
+                <h3><%= link_to location.name, location_path(location) %></h3>
+                <p><%= location.address %></p>
+                <p><strong>Distance Away: <%= location.distance.round %> km</strong></p>
+                <div class="container">
+                  <%= button_to 'Save Location', save_location_path(location), class: "btn btn-primary" %>
+                </div>
               </div>
-            
             </div>
-          </div>
-      <% end %>
-    <% end %>      
+          <% end %> 
+        <% end %>
+      <% else %>
+        <p>No results matched this search. Try again.</p>
+      <% end %>      
+    </div>
   </div>
-
 </div>
-</div>
-  
- 
