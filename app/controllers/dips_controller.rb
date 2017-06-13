@@ -30,6 +30,7 @@ class DipsController < ApplicationController
     else  
       coordinates = request.location.coordinates
     end
+    #@locations = []
     @locations = @dip.matching_locations(coordinates[0], coordinates[1]).shuffle[0...10]
   end
 

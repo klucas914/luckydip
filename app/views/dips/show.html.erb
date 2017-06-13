@@ -4,10 +4,10 @@
     <p></p>
     <h2>Give this a try...</h2>  
     <br>
-    <%= button_to "Shuffle", dip_path(@dip), method:'get', class: "btn btn-primary" %>
-    <br>
     <div class="container">
       <% if @locations.length > 0 %>  
+        <%= button_to "Shuffle", dip_path(@dip), method:'get', class: "btn btn-primary" %>
+        <br>
         <% @locations.each do |location| %>
           <% unless current_user and current_user.locations.include?(location) %>
             <div class="card">
@@ -23,7 +23,7 @@
           <% end %> 
         <% end %>
       <% else %>
-        <p>No results matched this search. Try again.</p>
+        <p>No results matched this search. <%= link_to "Try again.", new_dip_path %></p>
       <% end %>      
     </div>
   </div>
