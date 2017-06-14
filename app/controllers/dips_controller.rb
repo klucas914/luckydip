@@ -1,5 +1,5 @@
 class DipsController < ApplicationController
-  before_filter :verify_is_admin, only: [:new, :index, :edit, :update]
+  before_filter :verify_is_admin, only: [:index, :edit, :update]
   # GET /dips
   # GET /dips.json
   def index
