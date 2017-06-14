@@ -1,5 +1,5 @@
 class DipsController < ApplicationController
-  
+  before_filter :verify_is_admin, only: [:index, :edit, :update]
   # GET /dips
   # GET /dips.json
   def index
@@ -114,6 +114,10 @@ class DipsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def verify_is_admin
+      (current_user.nil?) ? redirect_to(new_user_session_path) : (redirect_to(new_user_session_path) unless current_user.admin?)
+    end
+
     def set_dip
       #@dip = Dip.find(params[:id])
       @dip = Dip.find_by(id: params[:id])

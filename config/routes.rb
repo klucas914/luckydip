@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   get '/about', to: 'welcome#about'
   get 'contact', to: 'welcome#contact'
   get '/owners', to: 'welcome#owners'
-
-  resources :dips, except: [:index, :edit, :update] do |d|
+#, except: [:index, :edit, :update]
+  resources :dips do |d|
     member do
       post :create_selection
     end

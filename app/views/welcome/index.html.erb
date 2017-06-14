@@ -1,34 +1,18 @@
 <div class="container-fluid">
-<br>
-  <!--<div class="container-fluid">-->
-    <nav class="navbar-toggleable-md navbar-light bg-faded">
-      <ul class="nav navbar-nav mx-auto">
-      <!--<a class="nav-link active" href="<%= about_path %>">About</a>    |-->
-      <!--<a class="nav-link" href="<%= owners_path %>">Business Owners</a>    |-->
-      <ul class="nav-item">
-      <a class="nav-link" href="<%= contact_path %>">Contact Us</a>
-      </ul>
-      <ul class="nav-item">
-      <a class="nav-link" href="https://www.facebook.com/luckydipapp/">Facebook</a>
-      </ul>
-      <ul class="nav-item">
-      <a class="nav-link" href="https://www.instagram.com/luckydipqld/">Instagram</a>
-      </ul>
-    </ul>
-    </nav>
-  <!--</div>-->
-  <br>
   <div class="jumbotron">
     <div class="page-header">
-      <div align="center"><%=image_tag("luckydiplogo2.png") %></div>
+      <div align="center"><%=image_tag("luckydiplogo2.png") %>
+      </div>
     </div>
-    <br>
     <div class="container">
-      <div align="center"><h1 style="color:white">Where will your luck take you?</h1></div>
-    <p>
+      <div align="center">
+        <h1 style="color:white">Where will your luck take you?</h1>
+      </div>
+      <br>
       <div class="row">
         <% if user_signed_in? %>
-          <div align="center"><%= link_to 'Go!', new_dip_path, class: "btn btn-primary btn-lg" %></div>
+          <div align="center"><%= link_to 'Go!', new_dip_path, class: "btn btn-primary btn-lg" %>
+          </div>
         <% else %>
           <div align="center"><%= link_to 'Get Started', new_user_session_path, class: "btn btn-primary btn-lg" %>
           </div>
@@ -36,14 +20,8 @@
       <%= link_to 'Sign Up', new_user_registration_path %> to get started!</h3></div></br>-->
         <% end %>
       </div>
-    </p>
     </div>
   </div>
-<br>
-
-<!--<div class="row">
-  <h1 style="text-align:center; font-family:verdana;">Lucky Dip App</h1>
-</div>-->
 <br>
 <div class="row">
   <div class="col-sm-6 col-md-4">
@@ -52,39 +30,35 @@
         <h3 class="card-title">Explorers Wanted</h3>
       </div>
       <div class="card-img-top"><%= image_tag("cottontree3.jpg", class: 'img-fluid') %></div>
-        <div class="card-block">
-          <p class="card-text">Itching to go somewhere new? Lucky Dip app matches your mood to locations and events around Sunshine Coast that you'll want to visit.  </p>
-        </div>
+      <div class="card-block">
+        <p class="card-text">Itching to go somewhere new? Lucky Dip app matches your mood to locations and events around Sunshine Coast that you'll want to visit.  </p>
+      </div>
     </div>
   </div>
-
   <div class="col-sm-6 col-md-4">
     <div class="card" style="height: 35em; background-color:lightgray">
       <div class="card-block">
         <h3 class="card-title">Locations Found</h3>
       </div>
-    <div class="card-img-top"><%= image_tag("maleny2.jpg", class: 'img-fluid') %></div>
-    <div class="card-block">
-      <p class="card-text">Use the app to find customized locations and events that fit your mood. No time consuming research. No wading through websites. With 3 clicks of a button you'll have the Sunshine Coast at your fingertips.</p>
+      <div class="card-img-top"><%= image_tag("maleny2.jpg", class: 'img-fluid') %></div>
+      <div class="card-block">
+        <p class="card-text">Use the app to find customized locations and events that fit your mood. No time consuming research. No wading through websites. With 3 clicks of a button you'll have the Sunshine Coast at your fingertips.</p>
+      </div>
     </div>
-</div>
-</div>
-
-<div class="col-sm-6 col-md-4">
- <div class="card" style="height: 35em; background-color:lightgray">
-   <div class="card-block">
-     <h3 class="card-title">It's Free</h3>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="card" style="height: 35em; background-color:lightgray">
+      <div class="card-block">
+        <h3 class="card-title">It's Free</h3>
+      </div>
+      <div class="card-img-top"><%= image_tag("pool2.jpg", class: 'img-fluid') %></div>
+      <div class="card-block">
+        <p class="card-text">Search and save as many locations and events as you want. Keep track of everywhere you've been and leave reviews of your favourites. </p>
+      </div>
     </div>
-  <div class="card-img-top"><%= image_tag("pool2.jpg", class: 'img-fluid') %></div>
-  <div class="card-block">
-    <p class="card-text">Search and save as many locations and events as you want. Keep track of everywhere you've been and leave reviews of your favourites. </p>
   </div>
-  </div>
-</div>
 </div>
 <br>
-
-
   <!--<div class="row">
     <div align="center">
       <h1>Where will your luck take you?</h1>
@@ -102,6 +76,20 @@
   <% end %>
 </div>
 <br>-->
-
+<!--<nav class="navbar-toggleable-md navbar-light bg-faded">-->
 </div>
-
+  <nav class="navbar navbar-toggleable-sm fixed-bottom navbar-light bg-faded">
+    <ul class="nav navbar-nav float-md-left">
+      <!--<a class="nav-link active" href="<%= about_path %>">About</a>    |-->
+      <!--<a class="nav-link" href="<%= owners_path %>">Business Owners</a>    |-->
+      <ul class="nav-item">
+        <a class="nav-link" href="<%= contact_path %>">Contact Us</a>
+      </ul>
+      <ul class="nav-item">
+        <a class="nav-link" href="https://www.facebook.com/luckydipapp/">Facebook</a>
+      </ul>
+      <ul class="nav-item">
+        <a class="nav-link" href="https://www.instagram.com/luckydipqld/">Instagram</a>
+      </ul>
+    </ul>
+  </nav>
