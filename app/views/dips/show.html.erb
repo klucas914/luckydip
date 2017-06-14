@@ -9,18 +9,18 @@
         <%= button_to "Shuffle", dip_path(@dip), method:'get', class: "btn btn-primary" %>
         <br>
         <% @locations.each do |location| %>
-          <% unless current_user and current_user.locations.include?(location) %>
-            <div class="card">
-              <div class="card-block">
-                <h3><%= link_to location.name, location_path(location) %></h3>
-                <p><%= location.address %></p>
-                <p><strong>Distance Away: <%= location.distance.round %> km</strong></p>
+          <div class="card">
+            <div class="card-block">
+              <h3><%= link_to location.name, location_path(location) %></h3>
+              <p><%= location.address %></p>
+              <p><strong>Distance Away: <%= location.distance.round %> km</strong></p>
+              <% unless current_user and current_user.locations.include?(location) %>
                 <div class="container">
                   <%= button_to 'Save Location', save_location_path(location), class: "btn btn-primary" %>
                 </div>
-              </div>
+              <% end %>
             </div>
-          <% end %> 
+          </div>
         <% end %>
       <% else %>
         <p>No results matched this search. <%= link_to "Try again.", new_dip_path %></p>

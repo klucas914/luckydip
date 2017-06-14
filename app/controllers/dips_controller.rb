@@ -23,15 +23,15 @@ class DipsController < ApplicationController
     address        = @user.address
     
      
-    if ENV.fetch("RAILS_ENV") == 'development' or ENV.fetch("RAILS_ENV") == 'test'
+    if address
       coordinates = Geocoder.coordinates(address)
-    elsif address
-      coordinates = Geocoder.coordinates(address)
-    else  
-      coordinates = request.location.coordinates
-    end 
-    #@locations = []
-    @locations = @dip.matching_locations(coordinates[0], coordinates[1]).shuffle[0...10]
+    elsif request.remote_ip
+      coordinates = Geocoder.coordinates(request.remote_ip)
+    end
+
+    # Default to Sunshine Coast if other location methods fail
+    coordinates = [-26.6500669, 153.0666733] unless coordinates
+    @locations  = @dip.matching_locations(coordinates[0], coordinates[1]).shuffle[0...10]
   end
 
   # GET /dips/new
