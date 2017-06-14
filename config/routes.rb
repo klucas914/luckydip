@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'contact', to: 'welcome#contact'
   get '/owners', to: 'welcome#owners'
 
-  resources :dips do |d|
+  resources :dips, except: [:index, :edit, :update] do |d|
     member do
       post :create_selection
     end
@@ -61,9 +61,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :check_ins 
   resources :location_types
-  
   resources :distances, only: [:new, :create]
-  resources :reviews
+  resources :reviews, except: [:index] 
   root 'welcome#index'
 
 end
