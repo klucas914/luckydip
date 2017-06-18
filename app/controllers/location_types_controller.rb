@@ -12,6 +12,18 @@ class LocationTypesController < ApplicationController
   def show
   end
 
+  def hide
+    @location_type = LocationType.find(params[:id])
+    @location_type.update(hidden: true)
+    redirect_to location_types_path
+  end
+
+  def unhide
+    @location_type = LocationType.find(params[:id])
+    @location_type.update(hidden: false)
+    redirect_to location_types_path
+  end
+
   # GET /location_types/new
   def new
     @location_type = LocationType.new
@@ -73,6 +85,6 @@ class LocationTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_type_params
-      params.require(:location_type).permit(:name)
+      params.require(:location_type).permit(:name, :hidden)
     end
 end

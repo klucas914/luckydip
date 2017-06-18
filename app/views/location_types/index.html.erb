@@ -6,12 +6,25 @@
 <table class="table table-striped">
 
   <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Hidden?</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr> 
     <% @location_types.each do |location_type| %>
       <tr>
         <td><%= location_type.name %>
         <% if current_user.try(:admin?) %>
+        <td><%= location_type.hidden %>
         <td><%= link_to 'Edit', edit_location_type_path(location_type) %></td>
         <td><%= link_to 'Destroy', location_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        <% if location_type.hidden? %>
+        <td><%= button_to 'Unhide from users', unhide_location_type_path(location_type), method: :unhide, class: "btn btn-success" %>
+        <% else %>
+        <td><%= button_to 'Hide from users', hide_location_type_path(location_type), method: :hide, class: "btn btn-danger" %></td>
         <% end %>
       </tr>
     <% end %>

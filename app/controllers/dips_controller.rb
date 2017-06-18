@@ -39,7 +39,7 @@ class DipsController < ApplicationController
   def new
     @dip = Dip.new
     @activities = Activity.where(hidden: false)
-    @location_types = LocationType.all
+    @location_types = LocationType.where(hidden: false)
 
   end
 

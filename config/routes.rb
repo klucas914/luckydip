@@ -60,7 +60,14 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :check_ins 
-  resources :location_types
+  resources :location_types do
+    member do
+      post :hide
+    end
+    member do
+      post :unhide
+    end
+  end
   resources :distances, only: [:new, :create]
   resources :reviews, except: [:index] 
   root 'welcome#index'
