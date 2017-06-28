@@ -12,4 +12,10 @@ class WelcomeController < ApplicationController
   def owners
   end
 
+  def features
+  end
+
+  def blog
+  end
+
 end

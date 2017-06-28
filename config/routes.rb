@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get '/about', to: 'welcome#about'
   get 'contact', to: 'welcome#contact'
   get '/owners', to: 'welcome#owners'
+  get '/features', to: 'welcome#features'
+  get '/blog', to: 'welcome#blog'
+
 #, except: [:index, :edit, :update]
   resources :dips do |d|
     member do
