@@ -38,8 +38,8 @@ class DipsController < ApplicationController
   # GET /dips/new
   def new
     @dip = Dip.new
-    @activities = Activity.where(hidden: false)
-    @location_types = LocationType.where(hidden: false)
+    @activities = Activity.where(hidden: false).order("name ASC")
+    @location_types = LocationType.where(hidden: false).order("name ASC")
 
   end
 
